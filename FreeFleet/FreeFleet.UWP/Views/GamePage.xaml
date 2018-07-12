@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="FreeFleet.UWP.Views.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FreeFleet.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:FreeFleet.UWP.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewModel:GamePageViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            <TextBox />
+        </StackPanel>
+        <WebView Grid.Row="1"
+                 x:Name="GameBrowser" 
+                 Source="https://tw.ogame.gameforge.com" 
+                 NavigationCompleted="GameBrowser_OnNavigationCompleted" />
+    </Grid>
+</Page>
