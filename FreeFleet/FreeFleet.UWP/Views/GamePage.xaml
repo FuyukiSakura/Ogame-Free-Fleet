@@ -27,7 +27,8 @@
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal">
                 <StackPanel.Resources>
-                    <Style TargetType="Button">
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource DefaultButton}">
                         <Setter Property="MinWidth" Value="100" />
                         <Setter Property="VerticalAlignment" Value="Stretch" />
                     </Style>

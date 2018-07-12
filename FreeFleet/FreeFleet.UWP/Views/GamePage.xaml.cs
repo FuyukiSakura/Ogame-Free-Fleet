@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Web.Http.Filters;
+using FreeFleet.Resources;
+using FreeFleet.UWP.Services.Web;
 using FreeFleet.UWP.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -89,12 +92,21 @@ namespace FreeFleet.UWP.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void GameBrowser_OnNavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        private async void GameBrowser_OnNavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
         {
-            if (args.Uri.Host == "lobby.ogame.gameforge.com")
+            if (args.Uri.Host == UriList.OgameLobbyHost)
             {
                 // if in lobby, get accounts
                 Console.WriteLine("In lobby...");
+                var httpService = new HttpService();
+                var uri = new Uri(UriList.OgameAccountList);
+                var container = httpService.GetCookies(uri);
+
+                var response = await httpService.GetResponseAsync(uri.AbsoluteUri, container);
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var accounts = await reader.ReadToEndAsync();
+                }
             }
         }
 
@@ -109,7 +121,7 @@ namespace FreeFleet.UWP.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         { 
             // Load URI after the page is loaded
-            GameBrowser.Source = new Uri("https://tw.ogame.gameforge.com");
+            GameBrowser.Source = new Uri(UriList.LandingUrl);
         }
 
         #endregion
