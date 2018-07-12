@@ -32,7 +32,7 @@
                         <Setter Property="VerticalAlignment" Value="Stretch" />
                     </Style>
                 </StackPanel.Resources>
-                <Button Content="Refresh" 
+                <Button Content="Refresh"
                         Click="RefreshBtn_OnClick"/>
                 <Button Content="Back" 
                         Click="NavigateBackBtn_OnClick"/>
