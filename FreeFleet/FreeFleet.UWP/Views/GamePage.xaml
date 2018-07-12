@@ -16,13 +16,33 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
-        <StackPanel>
-            <TextBox />
-        </StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox HorizontalAlignment="Stretch"
+                     Text="{Binding MainUrl, Mode=TwoWay}"/>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="MinWidth" Value="100" />
+                        <Setter Property="VerticalAlignment" Value="Stretch" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="Refresh" 
+                        Click="RefreshBtn_OnClick"/>
+                <Button Content="Back" 
+                        Click="NavigateBackBtn_OnClick"/>
+                <Button Content="Next"
+                        Click="NavigateForwardBtn_OnClick"/>
+            </StackPanel>
+        </Grid>
         <WebView Grid.Row="1"
-                 x:Name="GameBrowser" 
-                 Source="https://tw.ogame.gameforge.com" 
+                 x:Name="GameBrowser"
+                 NavigationStarting="GameBrowser_OnNavigationStarting"
                  NavigationCompleted="GameBrowser_OnNavigationCompleted" />
     </Grid>
 </Page>
