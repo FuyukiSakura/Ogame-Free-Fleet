@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http.Filters;
+using FreeFleet.Extension;
+using FreeFleet.Model.Ogame;
 using FreeFleet.Resources;
 using FreeFleet.UWP.Services.Web;
 using FreeFleet.UWP.ViewModels;
@@ -101,12 +103,7 @@ namespace FreeFleet.UWP.Views
                 var httpService = new HttpService();
                 var uri = new Uri(UriList.OgameAccountList);
                 var container = httpService.GetCookies(uri);
-
-                var response = await httpService.GetResponseAsync(uri.AbsoluteUri, container);
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    var accounts = await reader.ReadToEndAsync();
-                }
+                var accounts = await httpService.GetAccountsAsync();
             }
         }
 

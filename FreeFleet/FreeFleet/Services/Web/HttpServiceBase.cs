@@ -1,9 +1,15 @@
-﻿using System.Net;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
+using FreeFleet.Extension;
+using FreeFleet.Model.Ogame;
+using FreeFleet.Resources;
+using Xamarin.Forms;
 
 namespace FreeFleet.Services.Web
 {
-    public class HttpServiceBase
+    public abstract class HttpServiceBase
     {
         /// <summary>
         /// Send HTML request
@@ -17,5 +23,22 @@ namespace FreeFleet.Services.Web
             request.CookieContainer = cookieContainer;
             return await request.GetResponseAsync();
         }
+       
+        /// <summary>
+        /// Get accounts from Ogame Lobby
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ServerAccount[]> GetAccountsAsync()
+        {
+            var uri = new Uri(UriList.OgameAccountList);
+            var container = GetCookies(uri);
+            var response = await GetResponseAsync(uri.AbsoluteUri, container);
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                return (await reader.ReadToEndAsync()).JsonDeserialize<ServerAccount[]>();
+            }
+        }
+
+        public abstract CookieContainer GetCookies(Uri requestedUri);
     }
 }

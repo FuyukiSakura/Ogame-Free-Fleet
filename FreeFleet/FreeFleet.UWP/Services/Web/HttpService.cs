@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Web.Http.Filters;
 using FreeFleet.Services.Web;
+using FreeFleet.UWP.Services.Web;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(HttpService))]
 namespace FreeFleet.UWP.Services.Web
 {
     public class HttpService : HttpServiceBase, IHttpService
     {
-        public CookieContainer GetCookies(Uri requestedUri)
+        public override CookieContainer GetCookies(Uri requestedUri)
         {
             var httpBaseProtocolFilter = new HttpBaseProtocolFilter();
             var cookieManager = httpBaseProtocolFilter.CookieManager;
