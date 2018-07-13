@@ -123,7 +123,7 @@ namespace FreeFleet.Views
                 }
 
                 // Remove flags no longer exists
-                var removeFleets = eventFleets.Where(ef => fleets.All(f => f.Id != ef.Id));
+                var removeFleets = eventFleets.Where(ef => fleets.All(f => f.Id != ef.Id)).ToArray();
                 foreach (var removeFleet in removeFleets)
                 {
                     eventFleets.Remove(removeFleet);
