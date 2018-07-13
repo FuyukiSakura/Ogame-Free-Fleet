@@ -19,7 +19,7 @@ namespace FreeFleet.Model.Ogame
 
         #region Auto Property
 
-        public long DetailsFeet
+        public long DetailsFleet
         {
             get => _detailsFleet;
             set

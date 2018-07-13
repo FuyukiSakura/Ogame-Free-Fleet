@@ -93,9 +93,9 @@ namespace FreeFleet.Services.Web
                     Id = node.Id,
                     CoordsOrigin = coordOrigin,
                     CoordsDest = coordDest,
-                    DetailsFeet = Convert.ToInt64(detailsFleet)
                 };
                 fleets.Add(eventFleet);
+                    DetailsFleet = Convert.ToInt64(detailsFleet),
             }
 
             return fleets.ToArray();
