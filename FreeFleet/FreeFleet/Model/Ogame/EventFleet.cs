@@ -12,6 +12,10 @@ namespace FreeFleet.Model.Ogame
         public string Id { get; set; } 
         public string CoordsOrigin { get; set; }
         public string CoordsDest { get; set; }
+        public int MissionType { get; set; }
+
+        // Alarm related
+        public bool IsIgnored { get; set; }
 
         #region Auto Property
 

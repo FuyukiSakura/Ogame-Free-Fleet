@@ -107,7 +107,28 @@ namespace FreeFleet.Views
 
             // Check if in Game
             var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
-            _vm.GameManager.IsLogin = r.Match(uri.Host).Success;
+            var m = r.Match(uri.Host);
+            _vm.GameManager.IsLogin = m.Success;
+            if (m.Success)
+            {
+                // Load event fleet when user refreshes
+                var fleets = await DependencyService.Get<IHttpService>().GetEventFleetsAsync(uri.Host);
+                var eventFleets = _vm.GameManager.EventFleets;
+                foreach (var fleet in fleets)
+                {
+                    if (eventFleets.All(f => f.Id != fleet.Id))
+                    {
+                        eventFleets.Add(fleet);
+                    }
+                }
+
+                // Remove flags no longer exists
+                var removeFleets = eventFleets.Where(ef => fleets.All(f => f.Id != ef.Id));
+                foreach (var removeFleet in removeFleets)
+                {
+                    eventFleets.Remove(removeFleet);
+                }
+            }
         }
 
 	    #endregion

@@ -79,6 +79,15 @@ namespace FreeFleet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://{0}/game/index.php?page=eventList&amp;ajax=1.
+        /// </summary>
+        public static string OgameEventFleetUrl {
+            get {
+                return ResourceManager.GetString("OgameEventFleetUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lobby-api.ogame.gameforge.com.
         /// </summary>
         public static string OgameLobbyApiHost {

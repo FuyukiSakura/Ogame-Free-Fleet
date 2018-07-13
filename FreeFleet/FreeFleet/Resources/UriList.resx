@@ -125,6 +125,10 @@
     <value>https://lobby-api.ogame.gameforge.com/users/me/accounts</value>
     <comment>The page to get account list.</comment>
   </data>
+  <data name="OgameEventFleetUrl" xml:space="preserve">
+    <value>https://{0}/game/index.php?page=eventList&amp;ajax=1</value>
+    <comment>The URL for getting event fleet information</comment>
+  </data>
   <data name="OgameLobbyApiHost" xml:space="preserve">
     <value>lobby-api.ogame.gameforge.com</value>
     <comment>The lobby api host name.</comment>

@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using System.Xml;
 using FreeFleet.Extension;
 using FreeFleet.Model.Ogame;
 using FreeFleet.Resources;
+using HtmlAgilityPack;
 using Xamarin.Forms;
 
 namespace FreeFleet.Services.Web
@@ -23,7 +26,9 @@ namespace FreeFleet.Services.Web
             request.CookieContainer = cookieContainer;
             return await request.GetResponseAsync();
         }
-       
+
+        #region Accounts
+
         public async Task<ServerAccount[]> GetAccountsAsync()
         {
             var uri = new Uri(UriList.OgameAccountList);
@@ -52,6 +57,47 @@ namespace FreeFleet.Services.Web
                 return (await reader.ReadToEndAsync()).JsonDeserialize<LobbyLogin>();
             }
         }
+
+        #endregion
+
+        #region Game
+
+        public async Task<EventFleet[]> GetEventFleetsAsync(string host)
+        {
+            var uri = new Uri(string.Format(UriList.OgameEventFleetUrl,
+                host));
+            var container = GetCookies(uri);
+            var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
+            if (response.StatusCode != HttpStatusCode.OK) return null; // Failed requesting resources
+
+            var doc = new HtmlDocument();
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                doc.LoadHtml(await reader.ReadToEndAsync());
+            }
+
+            var eventFleetNodes = doc.DocumentNode.SelectNodes("//tr[@class='eventFleet']");
+            var fleets = new List<EventFleet>();
+            foreach (var node in eventFleetNodes)
+            {
+                var coordOrigin = node.SelectSingleNode("//td[@class='coordsOrigin']/a").InnerHtml.Trim();
+                var coordDest = node.SelectSingleNode("//td[@class='destCoords']/a").InnerHtml.Trim();
+                var detailsFleet = node.SelectSingleNode("//td[@class='detailsFleet']/span").InnerHtml;
+
+                var eventFleet = new EventFleet
+                {
+                    Id = node.Id,
+                    CoordsOrigin = coordOrigin,
+                    CoordsDest = coordDest,
+                    DetailsFeet = Convert.ToInt64(detailsFleet)
+                };
+                fleets.Add(eventFleet);
+            }
+
+            return fleets.ToArray();
+        }
+
+        #endregion
 
         #region Internal functions
 
