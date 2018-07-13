@@ -51,8 +51,24 @@
             <!--#region Event Fleet-->
 
             <Grid Grid.Column="1"
-                  IsVisible="True">
-                <Label Text="Hello World" />
+                  IsVisible="{Binding GameManager.IsLogin}">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- Fleet details -->
+                <telerikGrid:RadDataGrid ItemsSource="{Binding GameManager.EventFleets}" />
+                
+                <!-- Status Panel -->
+                <Label Grid.Row="1"
+                       Text="Status" 
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       BackgroundColor="Red"
+                       FontSize="50"
+                       HeightRequest="100" />
             </Grid>
 
             <!--#endregion-->

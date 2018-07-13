@@ -11,10 +11,13 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10">
+            <!-- Title -->
             <Label Text="{Binding Title}"
                    HorizontalOptions="CenterAndExpand"
                    Margin="30"
                    FontSize="35" />
+            
+            <!-- Login Controls -->
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand">
                 <StackLayout.Resources>
@@ -28,6 +31,8 @@
                 <telerikInput:RadButton Text="{Binding LoginButtonText}"
                                         Clicked="LoginBtn_OnClicked"/>
             </StackLayout>
+
+            <!-- Account List -->
             <telerikDataControls:RadListView x:Name="AccountList"
                                              HorizontalOptions="Center"
                                              VerticalOptions="FillAndExpand"

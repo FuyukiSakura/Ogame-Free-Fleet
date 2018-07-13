@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using FreeFleet.Resources;
 using FreeFleet.Services.Web;
@@ -17,7 +18,7 @@ namespace FreeFleet.Views
 	{
         // Singleton
 	    public static GamePage Instance = new GamePage();
-
+        
 	    private GamePageViewModel _vm;
 
 		public GamePage ()
@@ -96,11 +97,17 @@ namespace FreeFleet.Views
         private async void GameView_OnNavigated(object sender, WebNavigatedEventArgs e)
         {
             var uri = new Uri(e.Url);
+
+            // Check if in Lobby
 	        if (uri.Host == UriList.OgameLobbyHost)
 	        {
 	            // if in lobby, get accounts
 	            await Navigation.PushModalAsync(new AccountSelectionModal());
 	        }
+
+            // Check if in Game
+            var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
+            _vm.GameManager.IsLogin = r.Match(uri.Host).Success;
         }
 
 	    #endregion
