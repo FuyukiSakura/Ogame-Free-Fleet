@@ -2,34 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:FreeFleet.ViewModels.Home;assembly=FreeFleet"
+             xmlns:telerikGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerik="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
              x:Class="FreeFleet.Views.GamePage">
     <ContentPage.BindingContext>
         <viewModel:GamePageViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Spacing="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                
-                <Entry Text="{Binding MainUrl, Mode=TwoWay}"/>
-                <StackLayout Grid.Column="1"
-                             Orientation="Horizontal"
-                             Spacing="0">
-                    <Button Text="Refresh"
-                            Clicked="RefreshBtn_OnClick" />
-                    <Button Text="Back"
-                            Clicked="NavigateBackBtn_OnClick" />
-                    <Button Text="Forward"
-                            Clicked="NavigateForwardBtn_OnClick" />
-                </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region Gaming window-->
+
+            <StackLayout Spacing="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <telerikInput:RadEntry Text="{Binding MainUrl, Mode=TwoWay}"/>
+                    <StackLayout Grid.Column="1"
+                                 Orientation="Horizontal"
+                                 Spacing="0">
+                        <telerikInput:RadButton Text="Refresh"
+                                                Clicked="RefreshBtn_OnClick" />
+                        <telerikInput:RadButton Text="Back"
+                                                Clicked="NavigateBackBtn_OnClick" />
+                        <telerikInput:RadButton Text="Forward"
+                                                Clicked="NavigateForwardBtn_OnClick" />
+                    </StackLayout>
+                </Grid>
+                <WebView x:Name="GameView" 
+                         VerticalOptions="FillAndExpand"
+                         Navigating="GameView_OnNavigating"
+                         Navigated="GameView_OnNavigated" />
+            </StackLayout>
+
+            <!--#endregion-->
+
+            <!--#region Event Fleet-->
+
+            <Grid Grid.Column="1"
+                  IsVisible="True">
+                <Label Text="Hello World" />
             </Grid>
-            <WebView x:Name="GameView" 
-                     VerticalOptions="FillAndExpand"
-                     Navigating="GameView_OnNavigating"
-                     Navigated="GameView_OnNavigated" />
-        </StackLayout>
+
+            <!--#endregion-->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
