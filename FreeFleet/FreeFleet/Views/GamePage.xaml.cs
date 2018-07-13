@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FreeFleet.Resources;
 using FreeFleet.Services.Web;
 using FreeFleet.ViewModels.Home;
+using FreeFleet.Views.Modal;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -74,7 +75,7 @@ namespace FreeFleet.Views
 	        if (uri.Host == UriList.OgameLobbyHost)
 	        {
 	            // if in lobby, get accounts
-	            var accounts = await DependencyService.Get<IHttpService>().GetAccountsAsync();
+	            await Navigation.PushModalAsync(new AccountSelectionModal());
 	        }
         }
 

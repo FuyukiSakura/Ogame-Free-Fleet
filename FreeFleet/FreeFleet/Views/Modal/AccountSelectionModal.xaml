@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:FreeFleet.ViewModels.Modal;assembly=FreeFleet"
+             x:Class="FreeFleet.Views.Modal.AccountSelectionModal">
+    <ContentPage.BindingContext>
+        <viewModel:AccountSelectionViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Title}"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="30"
+                   FontSize="35" />
+            <ListView VerticalOptions="FillAndExpand"
+                      ItemsSource="{Binding Accounts}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

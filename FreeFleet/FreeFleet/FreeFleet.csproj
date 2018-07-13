@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
+    <Folder Include="Resources\Localization\General\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>BrowserInfo.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Localization\Layout\AccountSelectionModalResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AccountSelectionModalResources.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\UriList.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -36,6 +42,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BrowserInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Layout\AccountSelectionModalResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountSelectionModalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\UriList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UriList.Designer.cs</LastGenOutput>
@@ -44,6 +54,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\GamePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Modal\AccountSelectionModal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
