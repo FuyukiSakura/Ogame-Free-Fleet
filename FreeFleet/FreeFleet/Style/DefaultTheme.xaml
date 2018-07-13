@@ -3,7 +3,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     
     <!--#region Default control styles-->
-
+    
+    <!-- Grid layout -->
+    <Style TargetType="Grid" ApplyToDerivedTypes="True">
+        <!-- Do not auto space Grid children -->
+        <Setter Property="ColumnSpacing" Value="0" />
+        <Setter Property="RowSpacing" Value="0" />
+    </Style>
     
     <!--#endregion-->
 </ResourceDictionary>
