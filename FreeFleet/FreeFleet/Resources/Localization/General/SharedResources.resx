@@ -117,12 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonLogin" xml:space="preserve">
-    <value>Login</value>
-    <comment>Text displayed the login button.</comment>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Canel</value>
+    <comment>Text displayed on a general Cancel button.</comment>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Select an account</value>
-    <comment>Text displayed as the title of the Account Selection Modal.</comment>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Text displayed on a general Ok button.</comment>
   </data>
 </root>

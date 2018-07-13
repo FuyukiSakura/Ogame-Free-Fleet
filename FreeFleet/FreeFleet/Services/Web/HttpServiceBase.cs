@@ -24,10 +24,6 @@ namespace FreeFleet.Services.Web
             return await request.GetResponseAsync();
         }
        
-        /// <summary>
-        /// Get accounts from Ogame Lobby
-        /// </summary>
-        /// <returns></returns>
         public async Task<ServerAccount[]> GetAccountsAsync()
         {
             var uri = new Uri(UriList.OgameAccountList);
@@ -38,6 +34,22 @@ namespace FreeFleet.Services.Web
             using (var reader = new StreamReader(response.GetResponseStream()))
             {
                 return (await reader.ReadToEndAsync()).JsonDeserialize<ServerAccount[]>();
+            }
+        }
+
+        public async Task<LobbyLogin> LoginAccountAsync(ServerAccount account)
+        {
+            var uri = new Uri(string.Format(UriList.OgameLoginUrl,
+                account.Id,
+                account.Server.Language, 
+                account.Server.Number));
+            var container = GetCookies(uri);
+            var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
+            if (response.StatusCode != HttpStatusCode.OK) return null; // Failed requesting resources
+
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                return (await reader.ReadToEndAsync()).JsonDeserialize<LobbyLogin>();
             }
         }
 

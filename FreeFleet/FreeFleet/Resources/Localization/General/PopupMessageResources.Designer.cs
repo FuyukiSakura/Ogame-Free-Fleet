@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FreeFleet.Resources {
+namespace FreeFleet.Resources.Localization.General {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace FreeFleet.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class UriList {
+    internal class PopupMessageResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal UriList() {
+        internal PopupMessageResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.UriList", typeof(UriList).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.Localization.General.PopupMessageResources", typeof(PopupMessageResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace FreeFleet.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,47 +61,11 @@ namespace FreeFleet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://tw.ogame.gameforge.com.
+        ///   Looks up a localized string similar to Warning.
         /// </summary>
-        public static string LandingUrl {
+        internal static string TitleWarning {
             get {
-                return ResourceManager.GetString("LandingUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://lobby-api.ogame.gameforge.com/users/me/accounts.
-        /// </summary>
-        public static string OgameAccountList {
-            get {
-                return ResourceManager.GetString("OgameAccountList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to lobby-api.ogame.gameforge.com.
-        /// </summary>
-        public static string OgameLobbyApiHost {
-            get {
-                return ResourceManager.GetString("OgameLobbyApiHost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to lobby.ogame.gameforge.com.
-        /// </summary>
-        public static string OgameLobbyHost {
-            get {
-                return ResourceManager.GetString("OgameLobbyHost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://lobby-api.ogame.gameforge.com/users/me/loginLink?id={0}&amp;server[language]={1}&amp;server[number]={2}.
-        /// </summary>
-        public static string OgameLoginUrl {
-            get {
-                return ResourceManager.GetString("OgameLoginUrl", resourceCulture);
+                return ResourceManager.GetString("TitleWarning", resourceCulture);
             }
         }
     }

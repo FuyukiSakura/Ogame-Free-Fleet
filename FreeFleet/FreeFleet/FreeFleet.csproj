@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Resources\Localization\General\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +24,21 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>BrowserInfo.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Localization\General\ErrorMessageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ErrorMessageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Localization\General\PopupMessageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PopupMessageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Localization\General\SharedResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SharedResources.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\Localization\Layout\AccountSelectionModalResources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -42,6 +56,18 @@
     <EmbeddedResource Update="Resources\BrowserInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BrowserInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\General\ErrorMessageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\General\PopupMessageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PopupMessageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\General\SharedResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Localization\Layout\AccountSelectionModalResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

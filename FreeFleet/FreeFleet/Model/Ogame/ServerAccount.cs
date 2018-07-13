@@ -6,7 +6,7 @@ namespace FreeFleet.Model.Ogame
 {
     public class ServerAccount
     {
-        public bool Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public Server Server { get; set; }
         public bool Blocked { get; set; }

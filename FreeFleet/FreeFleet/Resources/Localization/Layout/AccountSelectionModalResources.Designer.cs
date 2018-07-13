@@ -61,6 +61,15 @@ namespace FreeFleet.Resources.Localization.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string ButtonLogin {
+            get {
+                return ResourceManager.GetString("ButtonLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select an account.
         /// </summary>
         internal static string Title {

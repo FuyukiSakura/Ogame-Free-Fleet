@@ -19,8 +19,30 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="30"
                    FontSize="35" />
-            <telerikDataControls:RadListView VerticalOptions="FillAndExpand"
-                                             ItemsSource="{Binding Accounts}" />
+            <StackLayout Orientation="Horizontal">
+                <telerikInput:RadButton Text="{Binding CancelButtonText}" />
+                <telerikInput:RadButton Text="{Binding LoginButtonText}"
+                                        Clicked="LoginBtn_OnClicked"/>
+            </StackLayout>
+            <telerikDataControls:RadListView x:Name="AccountList"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="FillAndExpand"
+                                             ItemsSource="{Binding Accounts}">
+                <telerikDataControls:RadListView.ItemTemplate>
+                    <DataTemplate>
+                        <telerikListView:ListViewTemplateCell>
+                            <telerikListView:ListViewTemplateCell.View>
+                                <StackLayout Padding="10"
+                                             Spacing="0">
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Server.Language}" />
+                                    <Label Text="{Binding Server.Number}" />
+                                </StackLayout>
+                            </telerikListView:ListViewTemplateCell.View>
+                        </telerikListView:ListViewTemplateCell>
+                    </DataTemplate>
+                </telerikDataControls:RadListView.ItemTemplate>
+            </telerikDataControls:RadListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
