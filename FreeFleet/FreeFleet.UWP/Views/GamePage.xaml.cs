@@ -99,11 +99,7 @@ namespace FreeFleet.UWP.Views
             if (args.Uri.Host == UriList.OgameLobbyHost)
             {
                 // if in lobby, get accounts
-                Console.WriteLine("In lobby...");
-                var httpService = new HttpService();
-                var uri = new Uri(UriList.OgameAccountList);
-                var container = httpService.GetCookies(uri);
-                var accounts = await httpService.GetAccountsAsync();
+                var accounts = await new HttpService().GetAccountsAsync();
             }
         }
 

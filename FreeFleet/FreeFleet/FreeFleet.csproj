@@ -19,6 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\BrowserInfo.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BrowserInfo.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\UriList.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -27,9 +32,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\BrowserInfo.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BrowserInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\UriList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UriList.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Style\DefaultTheme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\GamePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
