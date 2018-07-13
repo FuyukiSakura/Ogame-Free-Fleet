@@ -14,13 +14,21 @@
         <viewModel:AccountSelectionViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="10">
             <Label Text="{Binding Title}"
                    HorizontalOptions="CenterAndExpand"
                    Margin="30"
                    FontSize="35" />
-            <StackLayout Orientation="Horizontal">
-                <telerikInput:RadButton Text="{Binding CancelButtonText}" />
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <StackLayout.Resources>
+                    <Style TargetType="telerikInput:RadButton">
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="WidthRequest" Value="100" />
+                    </Style>
+                </StackLayout.Resources>
+                <telerikInput:RadButton Text="{Binding CancelButtonText}"
+                                        Clicked="CancelBtl_OnClicked"/>
                 <telerikInput:RadButton Text="{Binding LoginButtonText}"
                                         Clicked="LoginBtn_OnClicked"/>
             </StackLayout>

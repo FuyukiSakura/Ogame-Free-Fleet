@@ -40,19 +40,26 @@ namespace FreeFleet.Views.Modal
             // Login to account
 	        var account = (ServerAccount) AccountList.SelectedItem;
 	        var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
-            Console.WriteLine(login.Url);
+	        GamePage.Instance.GameViewNavigateTo(login.Url);
+	        await Navigation.PopModalAsync();
 	    }
+
+	    private async void CancelBtl_OnClicked(object sender, EventArgs e)
+	    {
+            // TODO: Show login instruction and Confirm
+	        await Navigation.PopModalAsync();
+        }
 
         #endregion
 
-	    #region Shared Functions
+        #region Shared Functions
 
-	    /// <summary>
-	    /// Display a popup with pre-inserted Warning title and OK button
-	    /// </summary>
-	    /// <param name="msg"></param>
-	    /// <returns></returns>
-	    private Task DisplayWarning(string msg)
+        /// <summary>
+        /// Display a popup with pre-inserted Warning title and OK button
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        private Task DisplayWarning(string msg)
 	    {
 	        return DisplayAlert(PopupMessage.TitleWarning, msg, SharedResources.ButtonOk);
 	    }
@@ -77,6 +84,5 @@ namespace FreeFleet.Views.Modal
 
         #endregion
 
- 
 	}
 }

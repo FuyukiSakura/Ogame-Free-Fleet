@@ -15,13 +15,27 @@ namespace FreeFleet.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GamePage : ContentPage
 	{
+        // Singleton
+	    public static GamePage Instance = new GamePage();
+
 	    private GamePageViewModel _vm;
 
 		public GamePage ()
 		{
 			InitializeComponent ();
 		    _vm = (GamePageViewModel) BindingContext;
-		}
+		    GameView.Source = UriList.LandingUrl;
+        }
+
+        /// <summary>
+        /// Make GameView navigate to the given URL
+        /// </summary>
+        /// <param name="url"></param>
+	    public void GameViewNavigateTo(string url)
+        {
+            GameView.Source = url;
+        }
+
 	    #region Buttons
 
 	    /// <summary>
@@ -64,11 +78,21 @@ namespace FreeFleet.Views
 
         #region Browser Handlers
 
+        /// <summary>
+        /// Handles GameView OnNavigating events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameView_OnNavigating(object sender, WebNavigatingEventArgs e)
 	    {
 	        _vm.MainUrl = e.Url;
 	    }
 
+        /// <summary>
+        /// Handles GameView OnNavigated events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void GameView_OnNavigated(object sender, WebNavigatedEventArgs e)
         {
             var uri = new Uri(e.Url);
@@ -77,18 +101,6 @@ namespace FreeFleet.Views
 	            // if in lobby, get accounts
 	            await Navigation.PushModalAsync(new AccountSelectionModal());
 	        }
-        }
-
-	    #endregion
-
-	    #region Overrides
-
-	    protected override void OnAppearing()
-	    {
-	        base.OnAppearing();
-
-            // Load URI after the page is loaded
-	        GameView.Source = new Uri(UriList.LandingUrl);
         }
 
 	    #endregion

@@ -12,7 +12,7 @@ namespace FreeFleet
 		{
 			InitializeComponent();
 
-			MainPage = new GamePage();
+			MainPage = GamePage.Instance;
 		}
 
 		protected override void OnStart ()
