@@ -57,7 +57,20 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!-- Fleet details -->
-                <telerikGrid:RadDataGrid ItemsSource="{Binding GameManager.EventFleets}" />
+                <telerikGrid:RadDataGrid ItemsSource="{Binding GameManager.EventFleets}"
+                                         AutoGenerateColumns="False">
+                    <telerikGrid:RadDataGrid.Columns>
+                        <telerikGrid:DataGridTextColumn PropertyName="CoordsOrigin"
+                                                        HeaderText="{Binding CoordsOriginColumnHeader}"
+                                                        SizeMode="Auto" />
+                        <telerikGrid:DataGridTextColumn PropertyName="CoordsDest"
+                                                        HeaderText="{Binding CoordsDestColumnHeader}"/>
+                        <telerikGrid:DataGridTextColumn PropertyName="DetailsFleet"
+                                                        HeaderText="{Binding DetailsFleetColumnHeader}" />
+                        <telerikGrid:DataGridTextColumn PropertyName="MissionType"
+                                                        HeaderText="{Binding MissionTypeColumnHeader}" />
+                    </telerikGrid:RadDataGrid.Columns>
+                </telerikGrid:RadDataGrid>
                 
                 <!-- Status Panel -->
                 <Label Grid.Row="1"

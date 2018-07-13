@@ -42,6 +42,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AccountSelectionModalResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Localization\Layout\GamePageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GamePageResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\UriList.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -69,6 +74,10 @@
     <EmbeddedResource Update="Resources\Localization\Layout\AccountSelectionModalResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountSelectionModalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Layout\GamePageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GamePageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\UriList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

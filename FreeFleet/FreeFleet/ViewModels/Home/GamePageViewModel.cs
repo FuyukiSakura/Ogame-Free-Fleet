@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using FreeFleet.Core;
+using FreeFleet.Resources.Localization.Layout;
 
 namespace FreeFleet.ViewModels.Home
 {
@@ -21,6 +22,19 @@ namespace FreeFleet.ViewModels.Home
                 OnPropertyChanged();
             }
         }
+
+        #endregion
+
+        #region Layout
+
+        #region DataGrid
+
+        public string CoordsOriginColumnHeader { get; } = GamePageResources.CoordsOriginColumnHeader;
+        public string CoordsDestColumnHeader { get; } = GamePageResources.CoordsDestColumnHeader;
+        public string DetailsFleetColumnHeader { get; } = GamePageResources.DetailsFleetColumnHeader;
+        public string MissionTypeColumnHeader { get; } = GamePageResources.MissionTypeColumnHeader;
+
+        #endregion
 
         #endregion
     }
