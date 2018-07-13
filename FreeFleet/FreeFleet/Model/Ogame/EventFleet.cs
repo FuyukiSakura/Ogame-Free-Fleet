@@ -13,6 +13,7 @@ namespace FreeFleet.Model.Ogame
         public string CoordsOrigin { get; set; }
         public string CoordsDest { get; set; }
         public int MissionType { get; set; }
+        public string MissionTypeText { get; set; }
 
         // Alarm related
         public bool IsIgnored { get; set; }

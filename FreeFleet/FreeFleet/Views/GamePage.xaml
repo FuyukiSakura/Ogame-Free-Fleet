@@ -67,7 +67,7 @@
                                                         HeaderText="{Binding CoordsDestColumnHeader}"/>
                         <telerikGrid:DataGridTextColumn PropertyName="DetailsFleet"
                                                         HeaderText="{Binding DetailsFleetColumnHeader}" />
-                        <telerikGrid:DataGridTextColumn PropertyName="MissionType"
+                        <telerikGrid:DataGridTextColumn PropertyName="MissionTypeText"
                                                         HeaderText="{Binding MissionTypeColumnHeader}" />
                     </telerikGrid:RadDataGrid.Columns>
                 </telerikGrid:RadDataGrid>

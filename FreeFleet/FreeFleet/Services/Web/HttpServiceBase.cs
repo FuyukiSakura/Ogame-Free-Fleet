@@ -84,18 +84,22 @@ namespace FreeFleet.Services.Web
 
             foreach (var node in eventFleetNodes)
             {
+                // TODO: Null check every node
                 var coordOrigin = node.SelectSingleNode("//td[@class='coordsOrigin']/a").InnerHtml.Trim();
                 var coordDest = node.SelectSingleNode("//td[@class='destCoords']/a").InnerHtml.Trim();
                 var detailsFleet = node.SelectSingleNode("//td[@class='detailsFleet']/span").InnerHtml;
+                var missionType = node.Attributes["data-mission-type"].Value;
+                var missionTypeText = node.SelectSingleNode("//td[@class='missionFleet']/img").Attributes["title"].Value;
 
-                var eventFleet = new EventFleet
+                fleets.Add(new EventFleet
                 {
                     Id = node.Id,
                     CoordsOrigin = coordOrigin,
                     CoordsDest = coordDest,
-                };
-                fleets.Add(eventFleet);
                     DetailsFleet = Convert.ToInt64(detailsFleet),
+                    MissionType = Convert.ToInt16(missionType),
+                    MissionTypeText = missionTypeText
+                });
             }
 
             return fleets.ToArray();
