@@ -1,4 +1,5 @@
 using System;
+using FreeFleet.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace FreeFleet
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = GamePage.Instance;
 		}
 
 		protected override void OnStart ()

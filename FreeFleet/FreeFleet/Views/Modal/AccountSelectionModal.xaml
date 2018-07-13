@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:InspectionApp.Controls"
+             xmlns:telerikGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerik="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:viewModel="clr-namespace:FreeFleet.ViewModels.Modal;assembly=FreeFleet"
+             x:Class="FreeFleet.Views.Modal.AccountSelectionModal">
+    <ContentPage.BindingContext>
+        <viewModel:AccountSelectionViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="{Binding Title}"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="30"
+                   FontSize="35" />
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <StackLayout.Resources>
+                    <Style TargetType="telerikInput:RadButton">
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="WidthRequest" Value="100" />
+                    </Style>
+                </StackLayout.Resources>
+                <telerikInput:RadButton Text="{Binding CancelButtonText}"
+                                        Clicked="CancelBtl_OnClicked"/>
+                <telerikInput:RadButton Text="{Binding LoginButtonText}"
+                                        Clicked="LoginBtn_OnClicked"/>
+            </StackLayout>
+            <telerikDataControls:RadListView x:Name="AccountList"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="FillAndExpand"
+                                             ItemsSource="{Binding Accounts}">
+                <telerikDataControls:RadListView.ItemTemplate>
+                    <DataTemplate>
+                        <telerikListView:ListViewTemplateCell>
+                            <telerikListView:ListViewTemplateCell.View>
+                                <StackLayout Padding="10"
+                                             Spacing="0">
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Server.Language}" />
+                                    <Label Text="{Binding Server.Number}" />
+                                </StackLayout>
+                            </telerikListView:ListViewTemplateCell.View>
+                        </telerikListView:ListViewTemplateCell>
+                    </DataTemplate>
+                </telerikDataControls:RadListView.ItemTemplate>
+            </telerikDataControls:RadListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
