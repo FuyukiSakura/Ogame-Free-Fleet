@@ -64,6 +64,7 @@ namespace FreeFleet.Services.Web
 
         public async Task<EventFleet[]> GetEventFleetsAsync(string host)
         {
+            // Load Event Fleets page
             var uri = new Uri(string.Format(UriList.OgameEventFleetUrl,
                 host));
             var container = GetCookies(uri);
@@ -76,8 +77,11 @@ namespace FreeFleet.Services.Web
                 doc.LoadHtml(await reader.ReadToEndAsync());
             }
 
-            var eventFleetNodes = doc.DocumentNode.SelectNodes("//tr[@class='eventFleet']");
+            // Parse event fleet page into Event Fleet details
             var fleets = new List<EventFleet>();
+            var eventFleetNodes = doc.DocumentNode.SelectNodes("//tr[@class='eventFleet']");
+            if (eventFleetNodes == null) return fleets.ToArray(); // No event, return
+
             foreach (var node in eventFleetNodes)
             {
                 var coordOrigin = node.SelectSingleNode("//td[@class='coordsOrigin']/a").InnerHtml.Trim();
