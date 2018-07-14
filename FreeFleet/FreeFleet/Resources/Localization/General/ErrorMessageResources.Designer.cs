@@ -61,6 +61,15 @@ namespace FreeFleet.Resources.Localization.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login failed..
+        /// </summary>
+        internal static string LoginFailed {
+            get {
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select an account..
         /// </summary>
         internal static string LoginNoAccountSelected {
