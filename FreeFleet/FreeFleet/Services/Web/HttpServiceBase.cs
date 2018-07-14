@@ -89,7 +89,6 @@ namespace FreeFleet.Services.Web
                 var coordDest = node.SelectSingleNode("//td[@class='destCoords']/a").InnerHtml.Trim();
                 var detailsFleet = node.SelectSingleNode("//td[@class='detailsFleet']/span").InnerHtml;
                 var missionType = node.Attributes["data-mission-type"].Value;
-                var missionTypeText = node.SelectSingleNode("//td[@class='missionFleet']/img").Attributes["title"].Value;
 
                 fleets.Add(new EventFleet
                 {
@@ -97,8 +96,7 @@ namespace FreeFleet.Services.Web
                     CoordsOrigin = coordOrigin,
                     CoordsDest = coordDest,
                     DetailsFleet = Convert.ToInt64(detailsFleet),
-                    MissionType = Convert.ToInt16(missionType),
-                    MissionTypeText = missionTypeText
+                    MissionType = (MissionType)Convert.ToInt16(missionType)
                 });
             }
 

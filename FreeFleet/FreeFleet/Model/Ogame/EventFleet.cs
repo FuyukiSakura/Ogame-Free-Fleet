@@ -12,8 +12,7 @@ namespace FreeFleet.Model.Ogame
         public string Id { get; set; } 
         public string CoordsOrigin { get; set; }
         public string CoordsDest { get; set; }
-        public int MissionType { get; set; }
-        public string MissionTypeText { get; set; }
+        public MissionType MissionType { get; set; }
 
         // Alarm related
         public bool IsIgnored { get; set; }
@@ -32,6 +31,19 @@ namespace FreeFleet.Model.Ogame
 
         #endregion
 
-        
+    }
+
+    public enum MissionType
+    {
+        Attack = 1,
+        AcsAttack = 2,
+        Transport = 3,
+        Deploy = 4,
+        AcsDefend = 5,
+        Espionage = 6,
+        Colonisation = 7,
+        Recycle = 8,
+        MoonDestruction = 9,
+        Expedition = 15
     }
 }
