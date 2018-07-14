@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using FreeFleet.Core;
 using FreeFleet.Resources;
 using FreeFleet.Services.Web;
 using FreeFleet.ViewModels.Home;
 using FreeFleet.Views.Modal;
+using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +20,7 @@ namespace FreeFleet.Views
 	{
         // Singleton
 	    public static GamePage Instance = new GamePage();
-
+        
 	    private GamePageViewModel _vm;
 
 		public GamePage ()
@@ -39,7 +42,7 @@ namespace FreeFleet.Views
 	    #region Buttons
 
 	    /// <summary>
-	    /// Handles refresh button on click
+	    /// Handles refresh button on clicked
 	    /// </summary>
 	    /// <param name="sender"></param>
 	    /// <param name="e"></param>
@@ -62,7 +65,7 @@ namespace FreeFleet.Views
 	    }
 
 	    /// <summary>
-	    /// Handles forward button on click
+	    /// Handles forward button on clicked
 	    /// </summary>
 	    /// <param name="sender"></param>
 	    /// <param name="e"></param>
@@ -74,7 +77,17 @@ namespace FreeFleet.Views
 	        }
 	    }
 
-	    #endregion
+        /// <summary>
+        /// Handles stop alarm button on clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+	    private void StopAlarmBtn_OnClicked(object sender, EventArgs e)
+	    {
+	        CrossSimpleAudioPlayer.Current.Stop();
+	    }
+
+        #endregion
 
         #region Browser Handlers
 
@@ -96,11 +109,25 @@ namespace FreeFleet.Views
         private async void GameView_OnNavigated(object sender, WebNavigatedEventArgs e)
         {
             var uri = new Uri(e.Url);
+
+            // Check if in Lobby
 	        if (uri.Host == UriList.OgameLobbyHost)
 	        {
 	            // if in lobby, get accounts
 	            await Navigation.PushModalAsync(new AccountSelectionModal());
 	        }
+
+            // Check if in Game
+            var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
+            var m = r.Match(uri.Host);
+            _vm.GameManager.IsInGame = m.Success;
+            if (m.Success)
+            {
+                // Load event fleet when user refreshes
+                _vm.GameManager.Login(uri.Host);
+                _vm.GameManager.UpdateEventFleets();
+                _vm.GameManager.StartMonitor();
+            }
         }
 
 	    #endregion

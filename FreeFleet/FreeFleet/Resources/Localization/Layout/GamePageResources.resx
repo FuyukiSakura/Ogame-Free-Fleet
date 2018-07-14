@@ -117,28 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LandingUrl" xml:space="preserve">
-    <value>https://tw.ogame.gameforge.com</value>
-    <comment>The landing webpage of Ogame.</comment>
+  <data name="CoordsDestColumnHeader" xml:space="preserve">
+    <value>Destination</value>
+    <comment>Text displayed as column header for Coords Dest property.</comment>
   </data>
-  <data name="OgameAccountList" xml:space="preserve">
-    <value>https://lobby-api.ogame.gameforge.com/users/me/accounts</value>
-    <comment>The page to get account list.</comment>
+  <data name="CoordsOriginColumnHeader" xml:space="preserve">
+    <value>Origin</value>
+    <comment>Text displayed as column header for Coords Origin property.</comment>
   </data>
-  <data name="OgameEventFleetUrl" xml:space="preserve">
-    <value>https://{0}/game/index.php?page=eventList&amp;ajax=1</value>
-    <comment>The URL for getting event fleet information</comment>
+  <data name="DetailsFleetColumnHeader" xml:space="preserve">
+    <value>Fleets</value>
+    <comment>Text displayed as column header for Details Fleet property.</comment>
   </data>
-  <data name="OgameLobbyApiHost" xml:space="preserve">
-    <value>lobby-api.ogame.gameforge.com</value>
-    <comment>The lobby api host name.</comment>
+  <data name="MissionTypeColumnHeader" xml:space="preserve">
+    <value>Mission Type</value>
+    <comment>Text displayed as column header for Mission Type property.</comment>
   </data>
-  <data name="OgameLobbyHost" xml:space="preserve">
-    <value>lobby.ogame.gameforge.com</value>
-    <comment>The lobby domain name.</comment>
-  </data>
-  <data name="OgameLoginUrl" xml:space="preserve">
-    <value>https://lobby-api.ogame.gameforge.com/users/me/loginLink?id={0}&amp;server[language]={1}&amp;server[number]={2}</value>
-    <comment>The URL for login to an account.</comment>
+  <data name="StopAlarmButton" xml:space="preserve">
+    <value>Stop alarm</value>
+    <comment>Text displayed on the button for stopping the alarm.</comment>
   </data>
 </root>

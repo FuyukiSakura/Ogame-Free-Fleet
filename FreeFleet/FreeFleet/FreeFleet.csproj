@@ -10,13 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2018.2.620.2" />
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
+    <None Remove="Resources\Audio\alarm.mp3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\" />
+    <EmbeddedResource Include="Resources\Audio\alarm.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2018.2.620.2" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +51,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AccountSelectionModalResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Localization\Layout\GamePageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GamePageResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\UriList.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -72,6 +83,10 @@
     <EmbeddedResource Update="Resources\Localization\Layout\AccountSelectionModalResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountSelectionModalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Layout\GamePageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GamePageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\UriList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

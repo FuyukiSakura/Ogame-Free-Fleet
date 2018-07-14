@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FreeFleet.Resources {
+namespace FreeFleet.Resources.Localization.Layout {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace FreeFleet.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class UriList {
+    internal class GamePageResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal UriList() {
+        internal GamePageResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.UriList", typeof(UriList).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.Localization.Layout.GamePageResources", typeof(GamePageResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace FreeFleet.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,56 +61,47 @@ namespace FreeFleet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://tw.ogame.gameforge.com.
+        ///   Looks up a localized string similar to Destination.
         /// </summary>
-        public static string LandingUrl {
+        internal static string CoordsDestColumnHeader {
             get {
-                return ResourceManager.GetString("LandingUrl", resourceCulture);
+                return ResourceManager.GetString("CoordsDestColumnHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://lobby-api.ogame.gameforge.com/users/me/accounts.
+        ///   Looks up a localized string similar to Origin.
         /// </summary>
-        public static string OgameAccountList {
+        internal static string CoordsOriginColumnHeader {
             get {
-                return ResourceManager.GetString("OgameAccountList", resourceCulture);
+                return ResourceManager.GetString("CoordsOriginColumnHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://{0}/game/index.php?page=eventList&amp;ajax=1.
+        ///   Looks up a localized string similar to Fleets.
         /// </summary>
-        public static string OgameEventFleetUrl {
+        internal static string DetailsFleetColumnHeader {
             get {
-                return ResourceManager.GetString("OgameEventFleetUrl", resourceCulture);
+                return ResourceManager.GetString("DetailsFleetColumnHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to lobby-api.ogame.gameforge.com.
+        ///   Looks up a localized string similar to Mission Type.
         /// </summary>
-        public static string OgameLobbyApiHost {
+        internal static string MissionTypeColumnHeader {
             get {
-                return ResourceManager.GetString("OgameLobbyApiHost", resourceCulture);
+                return ResourceManager.GetString("MissionTypeColumnHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to lobby.ogame.gameforge.com.
+        ///   Looks up a localized string similar to Stop alarm.
         /// </summary>
-        public static string OgameLobbyHost {
+        internal static string StopAlarmButton {
             get {
-                return ResourceManager.GetString("OgameLobbyHost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://lobby-api.ogame.gameforge.com/users/me/loginLink?id={0}&amp;server[language]={1}&amp;server[number]={2}.
-        /// </summary>
-        public static string OgameLoginUrl {
-            get {
-                return ResourceManager.GetString("OgameLoginUrl", resourceCulture);
+                return ResourceManager.GetString("StopAlarmButton", resourceCulture);
             }
         }
     }

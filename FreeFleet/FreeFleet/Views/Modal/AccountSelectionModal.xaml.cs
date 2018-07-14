@@ -39,9 +39,16 @@ namespace FreeFleet.Views.Modal
             
             // Login to account
 	        var account = (ServerAccount) AccountList.SelectedItem;
-	        var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
-	        GamePage.Instance.GameViewNavigateTo(login.Url);
-	        await Navigation.PopModalAsync();
+	        try
+	        {
+	            var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
+	            GamePage.Instance.GameViewNavigateTo(login.Url);
+	            await Navigation.PopModalAsync();
+	        }
+	        catch (WebException)
+	        {
+	            await DisplayWarning(ErrorMessage.LoginFailed);
+	        }
 	    }
 
 	    private async void CancelBtl_OnClicked(object sender, EventArgs e)

@@ -26,12 +26,17 @@ namespace FreeFleet.UWP.Services.Web
                 cookieContainer.Add(new Cookie
                 {
                     Domain = requestedUri.Host,
-                    Expires = ((DateTimeOffset)cookie.Expires).DateTime,
                     Name = cookie.Name,
                     Path = cookie.Path,
                     Secure = cookie.Secure,
                     Value = cookie.Value
                 });
+
+                if (cookie.Expires != null)
+                {
+                    // Set only if expire is not set
+                    cookie.Expires = ((DateTimeOffset) cookie.Expires).DateTime;
+                }
             }
 
             return cookieContainer;

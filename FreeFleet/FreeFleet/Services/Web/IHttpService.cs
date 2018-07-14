@@ -18,6 +18,8 @@ namespace FreeFleet.Services.Web
 
         #region Ogame functions
 
+        #region Account
+        
         /// <summary>
         /// Get accounts from Ogame Lobby
         /// </summary>
@@ -30,6 +32,19 @@ namespace FreeFleet.Services.Web
         /// <param name="account"></param>
         /// <returns></returns>
         Task<LobbyLogin> LoginAccountAsync(ServerAccount account);
+
+        #endregion
+
+        #region Game
+
+        /// <summary>
+        /// Get Event Fleets
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
+        Task<EventFleet[]> GetEventFleetsAsync(string host);
+
+        #endregion
 
         #endregion
     }

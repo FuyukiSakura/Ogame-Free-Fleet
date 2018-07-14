@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FreeFleet.Core;
+using FreeFleet.Resources.Localization.Layout;
 
 namespace FreeFleet.ViewModels.Home
 {
     public class GamePageViewModel : BindableBase
     {
         private string _mainUrl;
+        public GameManager GameManager { get; } = new GameManager();
 
         #region Auto Properties
 
@@ -19,6 +22,20 @@ namespace FreeFleet.ViewModels.Home
                 OnPropertyChanged();
             }
         }
+
+        #endregion
+
+        #region Layout
+
+        #region DataGrid
+
+        public string CoordsOriginColumnHeader { get; } = GamePageResources.CoordsOriginColumnHeader;
+        public string CoordsDestColumnHeader { get; } = GamePageResources.CoordsDestColumnHeader;
+        public string DetailsFleetColumnHeader { get; } = GamePageResources.DetailsFleetColumnHeader;
+        public string MissionTypeColumnHeader { get; } = GamePageResources.MissionTypeColumnHeader;
+        public string StopAlarmButtonLabel { get; } = GamePageResources.StopAlarmButton;
+
+        #endregion
 
         #endregion
     }
