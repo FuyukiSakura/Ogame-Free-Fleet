@@ -59,16 +59,17 @@ namespace FreeFleet.Core
             if(!IsLogin) return; // Not logged in, do nothing
             var fleets = await DependencyService.Get<IHttpService>().GetEventFleetsAsync(LoggedInServerHost);
             var eventFleets = EventFleets;
+
+            // Remove flags no longer exists
+            var removeFleets = eventFleets.Where(ef => fleets.All(f => f.Id != ef.Id)).ToArray();
+            foreach (var removeFleet in removeFleets)
+            {
+                eventFleets.Remove(removeFleet);
+            }
+
+            // Add new event fleets
             foreach (var fleet in fleets)
             {
-                // Remove flags no longer exists
-                var removeFleets = eventFleets.Where(ef => fleets.All(f => f.Id != ef.Id)).ToArray();
-                foreach (var removeFleet in removeFleets)
-                {
-                    eventFleets.Remove(removeFleet);
-                }
-
-                // Add new event fleets
                 if (eventFleets.All(f => f.Id != fleet.Id))
                 {
                     eventFleets.Add(fleet);
