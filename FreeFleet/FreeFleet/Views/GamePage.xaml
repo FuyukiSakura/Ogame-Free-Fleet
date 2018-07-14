@@ -51,7 +51,7 @@
             <!--#region Event Fleet-->
 
             <Grid Grid.Column="1"
-                  IsVisible="{Binding GameManager.IsLogin}">
+                  IsVisible="{Binding GameManager.IsInGame}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
@@ -74,12 +74,12 @@
                 
                 <!-- Status Panel -->
                 <Label Grid.Row="1"
-                       Text="Status" 
+                       Text="{Binding GameManager.NextUpdateLeft}" 
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
                        VerticalTextAlignment="Center"
                        HorizontalTextAlignment="Center"
-                       BackgroundColor="Red"
+                       BackgroundColor="LightGreen"
                        FontSize="50"
                        HeightRequest="100" />
             </Grid>
