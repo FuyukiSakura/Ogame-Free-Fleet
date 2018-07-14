@@ -9,6 +9,7 @@ using FreeFleet.Resources;
 using FreeFleet.Services.Web;
 using FreeFleet.ViewModels.Home;
 using FreeFleet.Views.Modal;
+using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -41,7 +42,7 @@ namespace FreeFleet.Views
 	    #region Buttons
 
 	    /// <summary>
-	    /// Handles refresh button on click
+	    /// Handles refresh button on clicked
 	    /// </summary>
 	    /// <param name="sender"></param>
 	    /// <param name="e"></param>
@@ -64,7 +65,7 @@ namespace FreeFleet.Views
 	    }
 
 	    /// <summary>
-	    /// Handles forward button on click
+	    /// Handles forward button on clicked
 	    /// </summary>
 	    /// <param name="sender"></param>
 	    /// <param name="e"></param>
@@ -76,7 +77,17 @@ namespace FreeFleet.Views
 	        }
 	    }
 
-	    #endregion
+        /// <summary>
+        /// Handles stop alarm button on clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+	    private void StopAlarmBtn_OnClicked(object sender, EventArgs e)
+	    {
+	        CrossSimpleAudioPlayer.Current.Stop();
+	    }
+
+        #endregion
 
         #region Browser Handlers
 

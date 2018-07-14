@@ -55,6 +55,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!-- Fleet details -->
                 <telerikGrid:RadDataGrid ItemsSource="{Binding GameManager.EventFleets}"
@@ -82,6 +83,10 @@
                        BackgroundColor="LightGreen"
                        FontSize="50"
                        HeightRequest="100" />
+                <telerikInput:RadButton Grid.Row="2"
+                                        Text="{Binding StopAlarmButtonLabel}"
+                                        HorizontalOptions="FillAndExpand"
+                                        Clicked="StopAlarmBtn_OnClicked"/>
             </Grid>
 
             <!--#endregion-->

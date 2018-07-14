@@ -133,4 +133,8 @@
     <value>Mission Type</value>
     <comment>Text displayed as column header for Mission Type property.</comment>
   </data>
+  <data name="StopAlarmButton" xml:space="preserve">
+    <value>Stop alarm</value>
+    <comment>Text displayed on the button for stopping the alarm.</comment>
+  </data>
 </root>

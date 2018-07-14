@@ -95,5 +95,14 @@ namespace FreeFleet.Resources.Localization.Layout {
                 return ResourceManager.GetString("MissionTypeColumnHeader", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop alarm.
+        /// </summary>
+        internal static string StopAlarmButton {
+            get {
+                return ResourceManager.GetString("StopAlarmButton", resourceCulture);
+            }
+        }
     }
 }

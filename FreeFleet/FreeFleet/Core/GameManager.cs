@@ -25,8 +25,8 @@ namespace FreeFleet.Core
         // Timer related
         private DateTime _lastUpdateTime;
         private int _nextUpdateLeft;
-        private int _updateInterval = 30; // 3 minutes
-        private int _randomUpToSeconds = 15;
+        private int _updateInterval = 180; // 3 minutes
+        private int _randomUpToSeconds = 30;
         private int _randomizer = 0;
 
         public GameManager()

@@ -33,6 +33,7 @@ namespace FreeFleet.ViewModels.Home
         public string CoordsDestColumnHeader { get; } = GamePageResources.CoordsDestColumnHeader;
         public string DetailsFleetColumnHeader { get; } = GamePageResources.DetailsFleetColumnHeader;
         public string MissionTypeColumnHeader { get; } = GamePageResources.MissionTypeColumnHeader;
+        public string StopAlarmButtonLabel { get; } = GamePageResources.StopAlarmButton;
 
         #endregion
 
