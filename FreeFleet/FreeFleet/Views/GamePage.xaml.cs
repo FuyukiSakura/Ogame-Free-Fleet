@@ -22,6 +22,7 @@ namespace FreeFleet.Views
 	    public static GamePage Instance = new GamePage();
         
 	    private GamePageViewModel _vm;
+	    public GameManager GameManger => _vm.GameManager;
 
 		public GamePage ()
 		{
@@ -109,24 +110,32 @@ namespace FreeFleet.Views
         private async void GameView_OnNavigated(object sender, WebNavigatedEventArgs e)
         {
             var uri = new Uri(e.Url);
+            var gm = _vm.GameManager;
 
             // Check if in Lobby
-	        if (uri.Host == UriList.OgameLobbyHost)
+            if (uri.Host == UriList.OgameLobbyHost)
 	        {
-	            // if in lobby, get accounts
-	            await Navigation.PushModalAsync(new AccountSelectionModal());
+                // if already logged in and re-login enabled
+	            if (gm.IsLogin && gm.AutoRelogin)
+	            {
+	                await GameManger.Login();
+	            }
+	            else
+	            {
+	                // if in lobby, get accounts
+	                await Navigation.PushModalAsync(new AccountSelectionModal());
+	            }
 	        }
 
             // Check if in Game
             var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
             var m = r.Match(uri.Host);
-            _vm.GameManager.IsInGame = m.Success;
+            gm.IsInGame = m.Success;
             if (m.Success)
             {
                 // Load event fleet when user refreshes
-                _vm.GameManager.Login(uri.Host);
-                _vm.GameManager.UpdateEventFleets();
-                _vm.GameManager.StartMonitor();
+                gm.UpdateEventFleets();
+                gm.StartMonitor();
             }
         }
 
