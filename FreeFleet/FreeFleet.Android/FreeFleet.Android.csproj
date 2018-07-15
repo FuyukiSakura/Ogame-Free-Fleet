@@ -73,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Fonts\fontawesome-brand.otf" />
+    <AndroidAsset Include="Assets\Fonts\fontawesome-regular.otf" />
+    <AndroidAsset Include="Assets\Fonts\fontawesome-solid.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

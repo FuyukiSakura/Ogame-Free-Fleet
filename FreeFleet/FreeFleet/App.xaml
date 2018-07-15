@@ -19,7 +19,8 @@
 	            <ResourceDictionary MergedWith="telerikDataControls:TelerikThemeStyles" />
 	            <ResourceDictionary MergedWith="dataGrid:TelerikThemeStyles"/>
 	            <ResourceDictionary MergedWith="telerikConversationalUi:TelerikThemeStyles"/>
-                <ResourceDictionary Source="Style/DefaultTheme.xaml" />
+	            <ResourceDictionary Source="Style/Resources.xaml" />
+	            <ResourceDictionary Source="Style/DefaultTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 	    </ResourceDictionary>
     </Application.Resources>

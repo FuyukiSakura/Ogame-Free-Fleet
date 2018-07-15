@@ -61,6 +61,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>UriList.resx</DependentUpon>
     </Compile>
+    <Compile Update="Style\Resources.xaml.cs">
+      <DependentUpon>Resources.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
