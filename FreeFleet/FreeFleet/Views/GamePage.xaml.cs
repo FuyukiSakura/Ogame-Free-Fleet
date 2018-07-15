@@ -89,6 +89,11 @@ namespace FreeFleet.Views
 	        CrossSimpleAudioPlayer.Current.Stop();
 	    }
 
+	    private async void OpenSettingsBtn_OnClicked(object sender, EventArgs e)
+	    {
+	        await Navigation.PushModalAsync(new SettingsModal());
+	    }
+
         #endregion
 
         #region Browser Handlers

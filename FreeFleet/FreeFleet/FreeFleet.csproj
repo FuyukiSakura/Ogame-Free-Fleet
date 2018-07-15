@@ -57,6 +57,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GamePageResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Localization\Layout\SettingsModalResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SettingsModalResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\UriList.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -95,6 +100,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GamePageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Layout\SettingsModalResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsModalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\UriList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UriList.Designer.cs</LastGenOutput>
@@ -106,6 +115,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Modal\AccountSelectionModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Modal\SettingsModal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

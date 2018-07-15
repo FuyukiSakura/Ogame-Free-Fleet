@@ -14,8 +14,8 @@
         <viewModel:GamePageViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <telerikPrimitives:RadSideDrawer x:Name="Drawer" 
-                                         DrawerLength="{StaticResource DrawerLength}"
+        <telerikPrimitives:RadSideDrawer DrawerLength="{StaticResource DrawerLength}"
+                                         DrawerTransitionType="SlideInOnTop"
                                          IsOpen="{Binding Path=IsMenuOpen, Mode=TwoWay}">
             <!--#region Main content -->
 
@@ -128,7 +128,13 @@
             <telerikPrimitives:RadSideDrawer.DrawerContent>
                 <ScrollView BackgroundColor="{StaticResource MenuBackground}">
                     <StackLayout>
-                        <telerikInput:RadButton Text="{Binding SettingsButton}" />
+                        <StackLayout.Resources>
+                            <Style TargetType="telerikInput:RadButton">
+                                <Setter Property="Style" Value="{StaticResource DrawerButton}" />
+                            </Style>
+                        </StackLayout.Resources>
+                        <telerikInput:RadButton Text="{Binding SettingsButton}"
+                                                Clicked="OpenSettingsBtn_OnClicked"/>
                         <BoxView Style="{StaticResource HorizontalSeparator}" />
                     </StackLayout>
                 </ScrollView>

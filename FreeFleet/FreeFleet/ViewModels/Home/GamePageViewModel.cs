@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using FreeFleet.Core;
+using FreeFleet.Resources.Localization.General;
 using FreeFleet.Resources.Localization.Layout;
 using Xamarin.Forms;
 
@@ -18,6 +19,7 @@ namespace FreeFleet.ViewModels.Home
         internal override Task InitializeAsync(object param = null)
         {
             // Control bar settings
+            Title = SharedResources.AppName;
             AppBarLeftButtonCommand = new Command(ToggleControl);
             return base.InitializeAsync(param);
         }

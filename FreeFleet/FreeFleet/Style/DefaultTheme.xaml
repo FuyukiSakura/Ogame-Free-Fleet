@@ -37,6 +37,21 @@
 
     <!--#region Default control styles-->
     
+    <!--#region Buttons-->
+    <OnPlatform x:TypeArguments="x:Double" x:Key="ButtonHeight">
+        <On Platform="Android">50</On>
+        <On Platform="UWP">45</On>
+    </OnPlatform>
+
+    <Style TargetType="Button"
+           x:Key="DrawerButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="{StaticResource ButtonHeight}" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!--#endregion-->
+
     <!-- Grid layout -->
     <Style TargetType="Grid" ApplyToDerivedTypes="True">
         <!-- Do not auto space Grid children -->

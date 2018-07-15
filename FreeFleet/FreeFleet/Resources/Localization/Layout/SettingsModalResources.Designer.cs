@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FreeFleet.Resources.Localization.General {
+namespace FreeFleet.Resources.Localization.Layout {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace FreeFleet.Resources.Localization.General {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SharedResources {
+    internal class SettingsModalResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SharedResources() {
+        internal SettingsModalResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FreeFleet.Resources.Localization.General {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.Localization.General.SharedResources", typeof(SharedResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.Localization.Layout.SettingsModalResources", typeof(SettingsModalResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,11 @@ namespace FreeFleet.Resources.Localization.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Free Fleet.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string AppName {
+        internal static string Title {
             get {
-                return ResourceManager.GetString("AppName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Canel.
-        /// </summary>
-        internal static string ButtonCancel {
-            get {
-                return ResourceManager.GetString("ButtonCancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ok.
-        /// </summary>
-        internal static string ButtonOk {
-            get {
-                return ResourceManager.GetString("ButtonOk", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }
