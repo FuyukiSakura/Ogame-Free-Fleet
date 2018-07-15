@@ -137,6 +137,7 @@ namespace FreeFleet.Views
             if (uri.Host == UriList.OgameLobbyHost)
             {
                 _vm.ShowLoginBtn = true; // In lobby, show login btn
+                gm.IsInGame = false; // In lobby, disable status panel
                 if (!gm.IsLogin) return; // Not logged in, do nothing
 
                 // if already logged in and re-login enabled
