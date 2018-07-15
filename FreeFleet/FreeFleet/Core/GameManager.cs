@@ -6,9 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using FreeFleet.Model.Ogame;
+using FreeFleet.Resources;
 using FreeFleet.Services.Web;
 using FreeFleet.ViewModels;
+using FreeFleet.Views;
 using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 
@@ -17,8 +20,9 @@ namespace FreeFleet.Core
     public class GameManager : BindableBase
     {
         private bool _isInGame;
+        private bool _autoRelogin = true;
 
-        public ServerAccount LoginedUser { get; set; }
+        public ServerAccount LoggedInUser { get; set; }
         public string LoggedInServerHost { get; private set; }
         public ObservableCollection<EventFleet> EventFleets { get; } = new ObservableCollection<EventFleet>();
 
@@ -34,10 +38,17 @@ namespace FreeFleet.Core
             EventFleets.CollectionChanged += EventFleetChangedHandler;
         }
 
-        public bool Login(string host)
+        public async Task<bool> Login(ServerAccount account = null)
         {
+            // If account not given, used the saved one
+            if (account == null) account = LoggedInUser;
+
+            // Login user
+            var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
+            GamePage.Instance.GameViewNavigateTo(login.Url);
+            LoggedInUser = account;
+            LoggedInServerHost = new Uri(login.Url).Host;
             IsLogin = true;
-            LoggedInServerHost = host;
             return true;
         }
 
@@ -58,21 +69,28 @@ namespace FreeFleet.Core
         {
             if(!IsLogin) return; // Not logged in, do nothing
             var fleets = await DependencyService.Get<IHttpService>().GetEventFleetsAsync(LoggedInServerHost);
-            var eventFleets = EventFleets;
+
+            // Check if request failed
+            if (fleets == null)
+            {
+                // Relogin if failed
+                GamePage.Instance.GameViewNavigateTo("https://" + UriList.OgameLobbyHost);
+                return;
+            }
 
             // Remove flags no longer exists
-            var removeFleets = eventFleets.Where(ef => fleets.All(f => f.Id != ef.Id)).ToArray();
+            var removeFleets = EventFleets.Where(ef => fleets.All(f => f.Id != ef.Id)).ToArray();
             foreach (var removeFleet in removeFleets)
             {
-                eventFleets.Remove(removeFleet);
+                EventFleets.Remove(removeFleet);
             }
 
             // Add new event fleets
             foreach (var fleet in fleets)
             {
-                if (eventFleets.All(f => f.Id != fleet.Id))
+                if (EventFleets.All(f => f.Id != fleet.Id))
                 {
-                    eventFleets.Add(fleet);
+                    EventFleets.Add(fleet);
                 }
             }
         }
@@ -163,6 +181,19 @@ namespace FreeFleet.Core
             set
             {
                 _randomUpToSeconds = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets or Sets whether the game manager will auto re-login
+        /// </summary>
+        public bool AutoRelogin
+        {
+            get => _autoRelogin;
+            set
+            {
+                _autoRelogin = value;
                 OnPropertyChanged();
             }
         }

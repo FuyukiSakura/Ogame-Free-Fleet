@@ -71,6 +71,9 @@ namespace FreeFleet.Services.Web
             var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
             if (response.StatusCode != HttpStatusCode.OK) return null; // Failed requesting resources
 
+            // Check if logged out
+            if (response.ResponseUri.Host == UriList.OgameLobbyHost) return null; // Logged out return
+
             var doc = new HtmlDocument();
             using (var reader = new StreamReader(response.GetResponseStream()))
             {

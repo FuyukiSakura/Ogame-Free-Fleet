@@ -41,8 +41,7 @@ namespace FreeFleet.Views.Modal
 	        var account = (ServerAccount) AccountList.SelectedItem;
 	        try
 	        {
-	            var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
-	            GamePage.Instance.GameViewNavigateTo(login.Url);
+	            await GamePage.Instance.GameManger.Login(account);
 	            await Navigation.PopModalAsync();
 	        }
 	        catch (WebException)
