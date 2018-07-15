@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FFImageLoading.Forms.Platform;
 
 namespace FreeFleet.Droid
 {
@@ -18,6 +19,7 @@ namespace FreeFleet.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            CachedImageRenderer.Init(false);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

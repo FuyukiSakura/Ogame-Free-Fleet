@@ -2,7 +2,21 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="FreeFleet.Style.DefaultTheme">
-    
+    <!--#region Color Keys-->
+
+    <Color x:Key="LightTextColor">White</Color>
+
+    <!--#endregion-->
+
+    <!--#region Navbar-->
+
+    <Color x:Key="HeaderBackgroundsColor">#404040</Color>
+    <x:String x:Key="BurgerButtonIcon">&#xf0c9;</x:String>
+    <x:String x:Key="SearchButtonIcon">&#xf002;</x:String>
+    <x:String x:Key="ArrowLeftIcon">&#xf104;</x:String>
+
+    <!--#endregion-->
+
     <!--#region Default control styles-->
     
     <!-- Grid layout -->

@@ -1,15 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using FreeFleet.Core;
 using FreeFleet.Resources.Localization.Layout;
+using Xamarin.Forms;
 
 namespace FreeFleet.ViewModels.Home
 {
-    public class GamePageViewModel : BindableBase
+    public class GamePageViewModel : PageViewModelBase
     {
         private string _mainUrl;
+        private bool _isMenuOpen;
+
         public GameManager GameManager { get; } = new GameManager();
+
+        internal override Task InitializeAsync(object param = null)
+        {
+            // Control bar settings
+            AppBarLeftButtonCommand = new Command(ToggleControl);
+            return base.InitializeAsync(param);
+        }
+
+        #region Sidebar
+
+        /// <summary>
+        /// Toggle control bar
+        /// </summary>
+        public void ToggleControl()
+        {
+            IsMenuOpen = !IsMenuOpen;
+        }
+
+        #endregion
 
         #region Auto Properties
 
@@ -19,6 +42,19 @@ namespace FreeFleet.ViewModels.Home
             set
             {
                 _mainUrl = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the menu drawer open status
+        /// </summary>
+        public bool IsMenuOpen
+        {
+            get => _isMenuOpen;
+            set
+            {
+                _isMenuOpen = value;
                 OnPropertyChanged();
             }
         }

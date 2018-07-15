@@ -28,6 +28,7 @@ namespace FreeFleet.Views
 		{
 			InitializeComponent ();
 		    _vm = (GamePageViewModel) BindingContext;
+		    _vm.InitializeAsync();
 		    GameView.Source = UriList.LandingUrl;
         }
 

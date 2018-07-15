@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TemplatedView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="FreeFleet.Controls.AppHeader">
+    <TemplatedView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="input:RadButton" x:Key="AppBarButtonStyle">
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="HeightRequest" Value="46" />
+                <Setter Property="WidthRequest" Value="46" />
+                <Setter Property="BorderRadius" Value="23" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
+            </Style>
+        </ResourceDictionary>
+    </TemplatedView.Resources>
+    <TemplatedView.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="{StaticResource Key=HeaderBackgroundsColor}">
+                <Grid HeightRequest="56">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <input:RadButton Text="{TemplateBinding Path=LeftButtonText}"
+                                     Command="{TemplateBinding Path=LeftButtonCommand}"
+                                     IsVisible="{TemplateBinding Path=IsLeftButtonVisible}"
+                                     IsEnabled="{TemplateBinding Path=IsLeftButtonEnabled}"
+                                     Style="{StaticResource Key=AppBarButtonStyle}"
+                                     HorizontalOptions="Start">
+                    </input:RadButton>
+
+                    <Grid Grid.Column="1" 
+                          VerticalOptions="Center"
+                          HorizontalOptions="Start" 
+                          ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <ffimageloading:CachedImage HeightRequest="30"
+                                                    VerticalOptions="Center">
+                            <ffimageloading:CachedImage.Source>
+                                <OnPlatform x:TypeArguments="ImageSource">
+                                    <On Platform="iOS, Android">icon.png</On>
+                                    <On Platform="UWP">/Assets/icon.png</On>
+                                </OnPlatform>
+                            </ffimageloading:CachedImage.Source>
+                        </ffimageloading:CachedImage>
+                        <Label Text="{TemplateBinding Path=Title}" 
+                            Grid.Column="1" 
+                            VerticalOptions="Center" 
+                            TextColor="{StaticResource Key=LightTextColor}"
+                            FontSize="20"/>
+                    </Grid>
+
+                    <input:RadButton Text="{TemplateBinding Path=MiddleButtonText}"
+                                     Command="{TemplateBinding Path=MiddleButtonCommand}"
+                                     IsVisible="{TemplateBinding Path=IsMiddleButtonVisible}"
+                                     IsEnabled="{TemplateBinding Path=IsMiddleButtonEnabled}"
+                                     Style="{StaticResource Key=AppBarButtonStyle}"
+                                     HorizontalOptions="End"
+                                     Grid.Column="2">
+                    </input:RadButton>
+
+                    <input:RadButton Text="{TemplateBinding Path=RightButtonText}"
+                                     Command="{TemplateBinding Path=RightButtonCommand}"
+                                     IsVisible="{TemplateBinding Path=IsRightButtonVisible}"
+                                     IsEnabled="{TemplateBinding Path=IsRightButtonEnabled}"
+                                     Style="{StaticResource Key=AppBarButtonStyle}"
+                                     HorizontalOptions="End"
+                                     Grid.Column="3"
+                                     Margin="0, 0, 10, 0">
+                    </input:RadButton>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </TemplatedView.ControlTemplate>
+</TemplatedView>
