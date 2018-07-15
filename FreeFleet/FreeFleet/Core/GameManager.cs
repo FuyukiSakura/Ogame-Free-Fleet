@@ -124,16 +124,17 @@ namespace FreeFleet.Core
             var requiredInterval = _updateInterval + _randomizer;
             var interval = (int)(timeNow - _lastUpdateTime).TotalSeconds;
             NextUpdateLeft = requiredInterval - interval;
-            if (interval > requiredInterval)
-            {
-                // Update fleet
-                UpdateEventFleets();
-                _lastUpdateTime = timeNow;
+            
+            if (interval <= requiredInterval) return true; // Not time out yet, repeat the timer
 
-                // Generate some randomness
-                var rnd1 = new Random();
-                _randomizer = rnd1.Next(0, _randomUpToSeconds);
-            }
+            // Time out, Update fleet
+            GamePage.Instance.GameViewRefresh(); // Refresh game screen too to prevent kick out
+            UpdateEventFleets();
+            _lastUpdateTime = timeNow;
+
+            // Generate some randomness
+            var rnd1 = new Random();
+            _randomizer = rnd1.Next(0, _randomUpToSeconds);
             return true; // Repeat the timer
         }
 

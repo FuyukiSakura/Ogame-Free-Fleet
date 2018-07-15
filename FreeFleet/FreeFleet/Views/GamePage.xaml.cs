@@ -41,6 +41,14 @@ namespace FreeFleet.Views
             GameView.Source = url;
         }
 
+        /// <summary>
+        /// Force game view to refresh
+        /// </summary>
+	    public void GameViewRefresh()
+	    {
+	        GameView.Source = (GameView.Source as UrlWebViewSource).Url;
+        }
+
 	    #region Buttons
 
 	    /// <summary>
