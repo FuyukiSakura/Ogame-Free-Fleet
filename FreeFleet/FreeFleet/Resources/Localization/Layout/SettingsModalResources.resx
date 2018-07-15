@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AutoLoginLabel" xml:space="preserve">
+    <value>Auto re-login</value>
+    <comment>Text displayed for label of Auto Login setting.</comment>
+  </data>
+  <data name="RandomUpToLabel" xml:space="preserve">
+    <value>Random factor</value>
+    <comment>Text displayed for label of Random Up To Seconds setting.</comment>
+  </data>
+  <data name="TimerIntervalLabel" xml:space="preserve">
+    <value>Timer interval</value>
+    <comment>Text displayed for label of Timer Interval setting.</comment>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Settings</value>
     <comment>Text displayed as the title of the Settings Modal.</comment>

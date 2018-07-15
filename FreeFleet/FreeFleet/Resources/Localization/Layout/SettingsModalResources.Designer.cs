@@ -61,6 +61,33 @@ namespace FreeFleet.Resources.Localization.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto re-login.
+        /// </summary>
+        internal static string AutoLoginLabel {
+            get {
+                return ResourceManager.GetString("AutoLoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Random factor.
+        /// </summary>
+        internal static string RandomUpToLabel {
+            get {
+                return ResourceManager.GetString("RandomUpToLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timer interval.
+        /// </summary>
+        internal static string TimerIntervalLabel {
+            get {
+                return ResourceManager.GetString("TimerIntervalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string Title {

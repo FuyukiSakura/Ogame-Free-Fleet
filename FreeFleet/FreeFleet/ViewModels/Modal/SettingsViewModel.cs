@@ -30,7 +30,10 @@ namespace FreeFleet.ViewModels.Modal
         }
 
         #region Layout
-        
+
+        public string TimerIntervalLabel { get; } = SettingsModal.TimerIntervalLabel;
+        public string RandomUpToLabel { get; } = SettingsModal.RandomUpToLabel;
+        public string AutoLoginLabel { get; } = SettingsModal.AutoLoginLabel;
 
         #endregion
     }
