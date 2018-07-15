@@ -88,6 +88,15 @@ namespace FreeFleet.Resources.Localization.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string MenuSettingsButton {
+            get {
+                return ResourceManager.GetString("MenuSettingsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mission Type.
         /// </summary>
         internal static string MissionTypeColumnHeader {

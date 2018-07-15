@@ -1,10 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
                     x:Class="FreeFleet.Style.DefaultTheme">
-    
+    <!--#region Color Keys-->
+
+    <!--General -->
+    <Color x:Key="LightTextColor">White</Color>
+    <Color x:Key="MenuBackground">#F2F2F2</Color>
+    <Color x:Key="LineSeparatorColor">LightGray</Color>
+
+    <!--Game status-->
+    <Color x:Key="GameStatusClear">LightGreen</Color>
+    <Color x:Key="GameStatusDanger">Pink</Color>
+
+    <!--#endregion-->
+
+    <!--#region Navbar-->
+
+    <Color x:Key="HeaderBackgroundsColor">#404040</Color>
+    <x:String x:Key="BurgerButtonIcon">&#xf0c9;</x:String>
+    <x:String x:Key="SearchButtonIcon">&#xf002;</x:String>
+    <x:String x:Key="ArrowLeftIcon">&#xf104;</x:String>
+
+    <!--#endregion-->
+
+    <!--#region Line separator-->
+
+    <Style TargetType="BoxView"
+           x:Key="VerticalSeparator">
+        <Setter Property="WidthRequest" Value="1" />
+        <Setter Property="Color" Value="{StaticResource LineSeparatorColor}"></Setter>
+    </Style>
+
+    <Style TargetType="BoxView"
+           x:Key="HorizontalSeparator">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="Color" Value="{StaticResource LineSeparatorColor}"></Setter>
+    </Style>
+
+    <!--#endregion-->
+
     <!--#region Default control styles-->
     
+    <!--#region Buttons-->
+    <OnPlatform x:TypeArguments="x:Double" x:Key="ButtonHeight">
+        <On Platform="Android">50</On>
+        <On Platform="UWP">45</On>
+    </OnPlatform>
+
+    <Style TargetType="telerikInput:RadButton"
+           x:Key="DrawerButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="{StaticResource ButtonHeight}" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!--#endregion-->
+
     <!-- Grid layout -->
     <Style TargetType="Grid" ApplyToDerivedTypes="True">
         <!-- Do not auto space Grid children -->
@@ -12,5 +65,15 @@
         <Setter Property="RowSpacing" Value="0" />
     </Style>
     
+    <!--#endregion-->
+
+    <!--#region Telerik-->
+
+    <!-- Drawer -->
+    <OnPlatform x:TypeArguments="x:Double" x:Key="DrawerLength">
+        <On Platform="Android">250</On>
+        <On Platform="UWP">200</On>
+    </OnPlatform>
+
     <!--#endregion-->
 </ResourceDictionary>

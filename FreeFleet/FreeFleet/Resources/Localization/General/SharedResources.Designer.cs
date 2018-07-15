@@ -61,6 +61,15 @@ namespace FreeFleet.Resources.Localization.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Free Fleet.
+        /// </summary>
+        internal static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Canel.
         /// </summary>
         internal static string ButtonCancel {

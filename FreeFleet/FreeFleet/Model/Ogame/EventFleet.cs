@@ -17,6 +17,13 @@ namespace FreeFleet.Model.Ogame
         // Alarm related
         public bool IsIgnored { get; set; }
 
+        public static MissionType[] GetOffensiveMissionTypes()
+        {
+            return new[]{ MissionType.AcsAttack,
+                MissionType.Attack,
+                MissionType.MoonDestruction };
+        }
+
         #region Auto Property
 
         public long DetailsFleet

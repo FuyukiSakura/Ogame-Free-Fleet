@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="FreeFleet.Style.Resources">
+    <!--#region Fonts-->
+
+    <!-- Font Awesome -->
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesome">
+        <On Platform="Android, iOS">Fonts/fontawesome-regular.otf#fontawesome</On>
+        <On Platform="UWP">/Assets/Fonts/fontawesome-regular.otf#Font Awesome 5 Free</On>
+    </OnPlatform>
+
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+        <On Platform="Android, iOS">Fonts/fontawesome-solid.otf#fontawesome</On>
+        <On Platform="UWP">/Assets/Fonts/fontawesome-solid.otf#Font Awesome 5 Free</On>
+    </OnPlatform>
+
+    <!--#endregion-->
+</ResourceDictionary>

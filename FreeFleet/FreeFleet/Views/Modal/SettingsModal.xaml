@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:FreeFleet.ViewModels.Modal;assembly=FreeFleet"
+             xmlns:controls="clr-namespace:FreeFleet.Controls;assembly=FreeFleet"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="FreeFleet.Views.Modal.SettingsModal">
+    <ContentPage.BindingContext>
+        <viewModel:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--#region Control bar-->
+
+            <controls:AppHeader LeftButtonText="{StaticResource ArrowLeftIcon}"
+                                Title="{Binding Path=Title}"
+                                TitleHorizontalOptions="Center"
+                                LeftButtonCommand="{Binding AppBarLeftButtonCommand}" />
+
+            <!--#endregion-->
+
+            <ScrollView Grid.Row="1"
+                        HorizontalOptions="FillAndExpand">
+                <StackLayout WidthRequest="250"
+                             HorizontalOptions="CenterAndExpand"
+                             Padding="10">
+                    <Label Text="{Binding TimerIntervalLabel}" />
+                    <telerikInput:RadNumericInput Minimum="10"
+                                                  Value="{Binding GameManager.UpdateInterval, Mode=TwoWay}" />
+                    <BoxView Style="{StaticResource HorizontalSeparator}" />
+                    <Label Text="{Binding RandomUpToLabel}" />
+                    <telerikInput:RadNumericInput Minimum="0"
+                                                  Value="{Binding GameManager.RandomUpToSeconds, Mode=TwoWay}" />
+                    <BoxView Style="{StaticResource HorizontalSeparator}" />
+                    <StackLayout Orientation="Horizontal">
+                        <telerikPrimitives:RadCheckBox IsChecked="{Binding GameManager.AutoRelogin, Mode=TwoWay}" />
+                        <Label Text="{Binding AutoLoginLabel}" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

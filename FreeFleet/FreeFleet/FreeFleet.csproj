@@ -22,6 +22,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Telerik.UI.for.Xamarin" Version="2018.2.620.2" />
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
   </ItemGroup>
 
@@ -56,14 +57,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GamePageResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Localization\Layout\SettingsModalResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SettingsModalResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\UriList.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>UriList.resx</DependentUpon>
     </Compile>
+    <Compile Update="Style\Resources.xaml.cs">
+      <DependentUpon>Resources.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\AppHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\BrowserInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BrowserInfo.Designer.cs</LastGenOutput>
@@ -88,6 +100,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GamePageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\Layout\SettingsModalResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsModalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\UriList.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UriList.Designer.cs</LastGenOutput>
@@ -99,6 +115,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Modal\AccountSelectionModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Modal\SettingsModal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
