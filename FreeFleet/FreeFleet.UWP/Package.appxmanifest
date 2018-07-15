@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="2d872f0f-20d1-4412-b107-90bfe020b851" Publisher="CN=a6fa01f1-0ae0-405f-b936-874074ac53bc" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="36483UTOSOFT.FreeFleet" Publisher="CN=2387FEB4-863B-4DA2-B21C-C5E7A83D43F4" Version="0.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="2df9ea5b-498f-4a10-b2dc-188ad861a17c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>FreeFleet.UWP</DisplayName>
-    <PublisherDisplayName>a6fa01f1-0ae0-405f-b936-874074ac53bc</PublisherDisplayName>
+    <DisplayName>Free Fleet</DisplayName>
+    <PublisherDisplayName>UTOSOFT</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
