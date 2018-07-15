@@ -118,24 +118,30 @@ namespace FreeFleet.Views
                 // if already logged in and re-login enabled
 	            if (gm.IsLogin && gm.AutoRelogin)
 	            {
-	                await GameManger.Login();
+	                if (!await GameManger.Login())
+	                {
+                        // Login failed, start over
+                        GameViewNavigateTo(UriList.LandingUrl);
+	                }
 	            }
 	            else
 	            {
 	                // if in lobby, get accounts
 	                await Navigation.PushModalAsync(new AccountSelectionModal());
 	            }
-	        }
-
-            // Check if in Game
-            var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
-            var m = r.Match(uri.Host);
-            gm.IsInGame = m.Success;
-            if (m.Success)
+            }
+            else
             {
-                // Load event fleet when user refreshes
-                gm.UpdateEventFleets();
-                gm.StartMonitor();
+                // Check if in Game
+                var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
+                var m = r.Match(uri.Host);
+                gm.IsInGame = m.Success;
+                if (m.Success)
+                {
+                    // Load event fleet when user refreshes
+                    gm.UpdateEventFleets();
+                    gm.StartMonitor();
+                }
             }
         }
 
