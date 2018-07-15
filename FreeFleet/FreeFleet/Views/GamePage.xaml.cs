@@ -174,6 +174,8 @@ namespace FreeFleet.Views
                 {
                     // Load event fleet when user refreshes
                     gm.UpdateEventFleets();
+
+                    // TODO: Start monitor only for once
                     gm.StartMonitor();
                 }
             }

@@ -129,7 +129,8 @@ namespace FreeFleet.Core
 
             // Time out, Update fleet
             GamePage.Instance.GameViewRefresh(); // Refresh game screen too to prevent kick out
-            UpdateEventFleets();
+            
+            // TODO: Update in event fleets event
             _lastUpdateTime = timeNow;
 
             // Generate some randomness
