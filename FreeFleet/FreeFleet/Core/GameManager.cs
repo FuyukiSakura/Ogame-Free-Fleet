@@ -21,6 +21,7 @@ namespace FreeFleet.Core
     public class GameManager : BindableBase
     {
         private bool _isInGame;
+        private bool _isLogin;
         private bool _autoRelogin = true;
 
         public ServerAccount LoggedInUser { get; set; }
@@ -226,7 +227,21 @@ namespace FreeFleet.Core
         /// <summary>
         /// Gets whether the game manager is logged in.
         /// </summary>
-        public bool IsLogin { get; private set; }
+        public bool IsLogin
+        {
+            get => _isLogin;
+            set
+            {
+                _isLogin = value;
+                OnPropertyChanged();
+                OnPropertyChanged("RequireLogin");
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the game requires login
+        /// </summary>
+        public bool RequireLogin => !IsLogin;
 
         #endregion
     }

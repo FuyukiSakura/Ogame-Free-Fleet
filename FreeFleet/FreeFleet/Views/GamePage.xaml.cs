@@ -89,10 +89,25 @@ namespace FreeFleet.Views
 	        CrossSimpleAudioPlayer.Current.Stop();
 	    }
 
+        /// <summary>
+        /// Handles open settings button on clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 	    private async void OpenSettingsBtn_OnClicked(object sender, EventArgs e)
 	    {
 	        await Navigation.PushModalAsync(new SettingsModal());
 	    }
+
+        /// <summary>
+        /// Handles login button on clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+	    private async void LoginBtn_OnClicked(object sender, EventArgs e)
+	    {
+	        await Navigation.PushModalAsync(new AccountSelectionModal());
+        }
 
         #endregion
 
@@ -120,21 +135,23 @@ namespace FreeFleet.Views
 
             // Check if in Lobby
             if (uri.Host == UriList.OgameLobbyHost)
-	        {
+            {
+                if (!gm.IsLogin) return; // Not logged in, do nothing
+
                 // if already logged in and re-login enabled
-	            if (gm.IsLogin && gm.AutoRelogin)
-	            {
-	                if (!await GameManger.Login())
-	                {
+                if (gm.AutoRelogin)
+                {
+                    if (!await GameManger.Login())
+                    {
                         // Login failed, start over
                         GameViewNavigateTo(UriList.LandingUrl);
-	                }
-	            }
-	            else
-	            {
-	                // if in lobby, get accounts
-	                await Navigation.PushModalAsync(new AccountSelectionModal());
-	            }
+                    }
+                }
+                else
+                {
+                    // Logged out
+                    gm.IsLogin = false;
+                }
             }
             else
             {

@@ -64,10 +64,17 @@
                                                             Clicked="NavigateForwardBtn_OnClick" />
                                 </StackLayout>
                             </Grid>
-                            <WebView x:Name="GameView" 
-                                     VerticalOptions="FillAndExpand"
-                                     Navigating="GameView_OnNavigating"
-                                     Navigated="GameView_OnNavigated" />
+                            <Grid VerticalOptions="FillAndExpand">
+                                <WebView x:Name="GameView" 
+                                         VerticalOptions="FillAndExpand"
+                                         Navigating="GameView_OnNavigating"
+                                         Navigated="GameView_OnNavigated" />
+                                <telerikInput:RadButton BackgroundColor="Transparent"
+                                                        VerticalOptions="FillAndExpand"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsVisible="{Binding GameManager.RequireLogin}"
+                                                        Clicked="LoginBtn_OnClicked"/>
+                            </Grid>
                         </StackLayout>
 
                         <!--#endregion-->
