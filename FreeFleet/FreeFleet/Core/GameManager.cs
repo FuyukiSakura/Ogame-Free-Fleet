@@ -239,14 +239,8 @@ namespace FreeFleet.Core
             {
                 _isLogin = value;
                 OnPropertyChanged();
-                OnPropertyChanged("RequireLogin");
             }
         }
-
-        /// <summary>
-        /// Gets whether the game requires login
-        /// </summary>
-        public bool RequireLogin => !IsLogin;
 
         /// <summary>
         /// Gets whether the current event fleets include any offensive mission

@@ -136,6 +136,7 @@ namespace FreeFleet.Views
             // Check if in Lobby
             if (uri.Host == UriList.OgameLobbyHost)
             {
+                _vm.ShowLoginBtn = true; // In lobby, show login btn
                 if (!gm.IsLogin) return; // Not logged in, do nothing
 
                 // if already logged in and re-login enabled
@@ -155,6 +156,7 @@ namespace FreeFleet.Views
             }
             else
             {
+                _vm.ShowLoginBtn = false; // Not in lobby, hide login btn
                 // Check if in Game
                 var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
                 var m = r.Match(uri.Host);

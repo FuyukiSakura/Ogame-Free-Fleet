@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="36483UTOSOFT.FreeFleet" Publisher="CN=2387FEB4-863B-4DA2-B21C-C5E7A83D43F4" Version="0.1.0.0" />
+  <Identity Name="36483UTOSOFT.FreeFleet" Publisher="CN=2387FEB4-863B-4DA2-B21C-C5E7A83D43F4" Version="0.1.1.0" />
   <mp:PhoneIdentity PhoneProductId="2df9ea5b-498f-4a10-b2dc-188ad861a17c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Free Fleet</DisplayName>

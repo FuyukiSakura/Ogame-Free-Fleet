@@ -80,7 +80,8 @@
                                 <telerikInput:RadButton BackgroundColor="Transparent"
                                                         VerticalOptions="FillAndExpand"
                                                         HorizontalOptions="FillAndExpand"
-                                                        IsVisible="{Binding GameManager.RequireLogin}"
+                                                        IsVisible="{Binding ShowLoginBtn}"
+                                                        Margin="0,150,0,0"
                                                         Clicked="LoginBtn_OnClicked"/>
                             </Grid>
                         </StackLayout>

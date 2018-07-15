@@ -13,6 +13,7 @@ namespace FreeFleet.ViewModels.Home
     {
         private string _mainUrl;
         private bool _isMenuOpen;
+        private bool _showLoginBtn;
 
         public GameManager GameManager { get; } = new GameManager();
 
@@ -57,6 +58,19 @@ namespace FreeFleet.ViewModels.Home
             set
             {
                 _isMenuOpen = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether to show the login button
+        /// </summary>
+        public bool ShowLoginBtn
+        {
+            get => _showLoginBtn;
+            set
+            {
+                _showLoginBtn = value;
                 OnPropertyChanged();
             }
         }
