@@ -129,6 +129,10 @@
     <value>Fleets</value>
     <comment>Text displayed as column header for Details Fleet property.</comment>
   </data>
+  <data name="MenuSettingsButton" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Text displayed on the side menu for the settings button.</comment>
+  </data>
   <data name="MissionTypeColumnHeader" xml:space="preserve">
     <value>Mission Type</value>
     <comment>Text displayed as column header for Mission Type property.</comment>

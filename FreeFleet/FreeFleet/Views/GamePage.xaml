@@ -14,103 +14,127 @@
         <viewModel:GamePageViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <telerikPrimitives:RadSideDrawer x:Name="Drawer" 
+                                         DrawerLength="{StaticResource DrawerLength}"
+                                         IsOpen="{Binding Path=IsMenuOpen, Mode=TwoWay}">
+            <!--#region Main content -->
 
-            <!--#region Control bar-->
+            <telerikPrimitives:RadSideDrawer.MainContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-            <controls:AppHeader LeftButtonText="{StaticResource BurgerButtonIcon}"
-                                Title="{Binding Path=Title}"
-                                TitleHorizontalOptions="Center"
-                                LeftButtonCommand="{Binding AppBarLeftButtonCommand}"
-                                IsMiddleButtonEnabled="False"
-                                IsMiddleButtonVisible="False"
-                                IsRightButtonEnabled="False"
-                                IsRightButtonVisible="False" />
-            
-            <!--#endregion-->
+                    <!--#region Control bar-->
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                    <controls:AppHeader LeftButtonText="{StaticResource BurgerButtonIcon}"
+                                        Title="{Binding Path=Title}"
+                                        TitleHorizontalOptions="Center"
+                                        LeftButtonCommand="{Binding AppBarLeftButtonCommand}"
+                                        IsMiddleButtonEnabled="False"
+                                        IsMiddleButtonVisible="False"
+                                        IsRightButtonEnabled="False"
+                                        IsRightButtonVisible="False" />
+                    
+                    <!--#endregion-->
 
-                <!--#region Gaming window-->
-
-                <StackLayout Spacing="0">
-                    <Grid>
+                    <Grid Grid.Row="1">
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <telerikInput:RadEntry Text="{Binding MainUrl, Mode=TwoWay}"/>
-                        <StackLayout Grid.Column="1"
-                                     Orientation="Horizontal"
-                                     Spacing="0">
-                            <telerikInput:RadButton Text="Refresh"
-                                                    Clicked="RefreshBtn_OnClick" />
-                            <telerikInput:RadButton Text="Back"
-                                                    Clicked="NavigateBackBtn_OnClick" />
-                            <telerikInput:RadButton Text="Forward"
-                                                    Clicked="NavigateForwardBtn_OnClick" />
+                        <!--#region Gaming window-->
+
+                        <StackLayout Spacing="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <telerikInput:RadEntry Text="{Binding MainUrl, Mode=TwoWay}"/>
+                                <StackLayout Grid.Column="1"
+                                             Orientation="Horizontal"
+                                             Spacing="0">
+                                    <telerikInput:RadButton Text="Refresh"
+                                                            Clicked="RefreshBtn_OnClick" />
+                                    <telerikInput:RadButton Text="Back"
+                                                            Clicked="NavigateBackBtn_OnClick" />
+                                    <telerikInput:RadButton Text="Forward"
+                                                            Clicked="NavigateForwardBtn_OnClick" />
+                                </StackLayout>
+                            </Grid>
+                            <WebView x:Name="GameView" 
+                                     VerticalOptions="FillAndExpand"
+                                     Navigating="GameView_OnNavigating"
+                                     Navigated="GameView_OnNavigated" />
                         </StackLayout>
+
+                        <!--#endregion-->
+
+                        <!--#region Event Fleet-->
+
+                        <Grid Grid.Column="1"
+                              IsVisible="{Binding GameManager.IsInGame}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!-- Fleet details -->
+                            <telerikGrid:RadDataGrid ItemsSource="{Binding GameManager.EventFleets}"
+                                                     AutoGenerateColumns="False">
+                                <telerikGrid:RadDataGrid.Columns>
+                                    <telerikGrid:DataGridTextColumn PropertyName="CoordsOrigin"
+                                                                    HeaderText="{Binding CoordsOriginColumnHeader}"
+                                                                    SizeMode="Auto" />
+                                    <telerikGrid:DataGridTextColumn PropertyName="CoordsDest"
+                                                                    HeaderText="{Binding CoordsDestColumnHeader}"/>
+                                    <telerikGrid:DataGridTextColumn PropertyName="DetailsFleet"
+                                                                    HeaderText="{Binding DetailsFleetColumnHeader}" />
+                                    <telerikGrid:DataGridTextColumn PropertyName="MissionType"
+                                                                    HeaderText="{Binding MissionTypeColumnHeader}" />
+                                </telerikGrid:RadDataGrid.Columns>
+                            </telerikGrid:RadDataGrid>
+                            
+                            <!-- Status Panel -->
+                            <Label Grid.Row="1"
+                                   Text="{Binding GameManager.NextUpdateLeft}" 
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   BackgroundColor="LightGreen"
+                                   FontSize="50"
+                                   HeightRequest="100" />
+                            <telerikInput:RadButton Grid.Row="2"
+                                                    Text="{Binding StopAlarmButtonLabel}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Clicked="StopAlarmBtn_OnClicked"/>
+                        </Grid>
+
+                        <!--#endregion-->
                     </Grid>
-                    <WebView x:Name="GameView" 
-                             VerticalOptions="FillAndExpand"
-                             Navigating="GameView_OnNavigating"
-                             Navigated="GameView_OnNavigated" />
-                </StackLayout>
-
-                <!--#endregion-->
-
-                <!--#region Event Fleet-->
-
-                <Grid Grid.Column="1"
-                      IsVisible="{Binding GameManager.IsInGame}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <!-- Fleet details -->
-                    <telerikGrid:RadDataGrid ItemsSource="{Binding GameManager.EventFleets}"
-                                             AutoGenerateColumns="False">
-                        <telerikGrid:RadDataGrid.Columns>
-                            <telerikGrid:DataGridTextColumn PropertyName="CoordsOrigin"
-                                                            HeaderText="{Binding CoordsOriginColumnHeader}"
-                                                            SizeMode="Auto" />
-                            <telerikGrid:DataGridTextColumn PropertyName="CoordsDest"
-                                                            HeaderText="{Binding CoordsDestColumnHeader}"/>
-                            <telerikGrid:DataGridTextColumn PropertyName="DetailsFleet"
-                                                            HeaderText="{Binding DetailsFleetColumnHeader}" />
-                            <telerikGrid:DataGridTextColumn PropertyName="MissionType"
-                                                            HeaderText="{Binding MissionTypeColumnHeader}" />
-                        </telerikGrid:RadDataGrid.Columns>
-                    </telerikGrid:RadDataGrid>
-                    
-                    <!-- Status Panel -->
-                    <Label Grid.Row="1"
-                           Text="{Binding GameManager.NextUpdateLeft}" 
-                           VerticalOptions="FillAndExpand"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalTextAlignment="Center"
-                           HorizontalTextAlignment="Center"
-                           BackgroundColor="LightGreen"
-                           FontSize="50"
-                           HeightRequest="100" />
-                    <telerikInput:RadButton Grid.Row="2"
-                                            Text="{Binding StopAlarmButtonLabel}"
-                                            HorizontalOptions="FillAndExpand"
-                                            Clicked="StopAlarmBtn_OnClicked"/>
                 </Grid>
+            </telerikPrimitives:RadSideDrawer.MainContent>
+            
+            <!--#endregion-->
 
-                <!--#endregion-->
-            </Grid>
-        </Grid>
+            <!--#region Menu -->
+
+            <telerikPrimitives:RadSideDrawer.DrawerContent>
+                <ScrollView BackgroundColor="{StaticResource MenuBackground}">
+                    <StackLayout>
+                        <telerikInput:RadButton Text="{Binding SettingsButton}" />
+                        <BoxView Style="{StaticResource HorizontalSeparator}" />
+                    </StackLayout>
+                </ScrollView>
+            </telerikPrimitives:RadSideDrawer.DrawerContent>
+            
+            <!--#endregion-->
+        </telerikPrimitives:RadSideDrawer>
     </ContentPage.Content>
 </ContentPage>
