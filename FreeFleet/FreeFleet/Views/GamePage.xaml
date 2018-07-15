@@ -6,10 +6,18 @@
              xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
              xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
              xmlns:controls="clr-namespace:FreeFleet.Controls;assembly=FreeFleet"
+             xmlns:converters="clr-namespace:FreeFleet.Utility;assembly=FreeFleet"
              x:Class="FreeFleet.Views.GamePage">
     <ContentPage.BindingContext>
         <viewModel:GamePageViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToColorConverter x:Key="BooleanToStatusColorConverter"
+                                                TrueValue="{StaticResource GameStatusDanger}"
+                                                FalseValue="{StaticResource GameStatusClear}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <telerikPrimitives:RadSideDrawer DrawerLength="{StaticResource DrawerLength}"
                                          DrawerTransitionType="SlideInOnTop"
@@ -111,7 +119,7 @@
                                    HorizontalOptions="FillAndExpand"
                                    VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
-                                   BackgroundColor="LightGreen"
+                                   BackgroundColor="{Binding GameManager.IsUnderAttack, Converter={StaticResource BooleanToStatusColorConverter}}"
                                    FontSize="50"
                                    HeightRequest="100" />
                             <telerikInput:RadButton Grid.Row="2"

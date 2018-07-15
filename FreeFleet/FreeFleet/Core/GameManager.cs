@@ -65,6 +65,8 @@ namespace FreeFleet.Core
             }
         }
 
+        #region Monitor
+
         /// <summary>
         /// Start the event fleets monitor
         /// </summary>
@@ -108,6 +110,8 @@ namespace FreeFleet.Core
             }
         }
 
+        #endregion
+
         #region Handlers
 
         /// <summary>
@@ -138,12 +142,13 @@ namespace FreeFleet.Core
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void EventFleetChangedHandler(object sender, NotifyCollectionChangedEventArgs e)
+        private void EventFleetChangedHandler(object sender, NotifyCollectionChangedEventArgs e)
         {
+            OnPropertyChanged("IsUnderAttack"); // Check status
             if (e.Action != NotifyCollectionChangedAction.Add) return;
             if (!(e.NewItems[0] is EventFleet eventFleet)) return; // Type mismatch, return
 
-            MissionType[] offensiveMission = { MissionType.AcsAttack, MissionType.Attack, MissionType.MoonDestruction };
+            var offensiveMission = EventFleet.GetOffensiveMissionTypes();
             if (!offensiveMission.Contains(eventFleet.MissionType)) return; // Not an offensive mission, return
 
             // Offensive mission, play alert
@@ -242,6 +247,13 @@ namespace FreeFleet.Core
         /// Gets whether the game requires login
         /// </summary>
         public bool RequireLogin => !IsLogin;
+
+        /// <summary>
+        /// Gets whether the current event fleets include any offensive mission
+        /// </summary>
+        public bool IsUnderAttack => EventFleets.Any(f => EventFleet
+            .GetOffensiveMissionTypes()
+            .Contains(f.MissionType));
 
         #endregion
     }

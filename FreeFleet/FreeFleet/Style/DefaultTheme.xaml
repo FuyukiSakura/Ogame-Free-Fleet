@@ -5,9 +5,14 @@
                     x:Class="FreeFleet.Style.DefaultTheme">
     <!--#region Color Keys-->
 
+    <!--General -->
     <Color x:Key="LightTextColor">White</Color>
     <Color x:Key="MenuBackground">#F2F2F2</Color>
     <Color x:Key="LineSeparatorColor">LightGray</Color>
+
+    <!--Game status-->
+    <Color x:Key="GameStatusClear">LightGreen</Color>
+    <Color x:Key="GameStatusDanger">Pink</Color>
 
     <!--#endregion-->
 
