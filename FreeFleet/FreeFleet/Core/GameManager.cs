@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,12 +45,23 @@ namespace FreeFleet.Core
             if (account == null) account = LoggedInUser;
 
             // Login user
-            var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
-            GamePage.Instance.GameViewNavigateTo(login.Url);
-            LoggedInUser = account;
-            LoggedInServerHost = new Uri(login.Url).Host;
-            IsLogin = true;
-            return true;
+            try
+            {
+                var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
+                GamePage.Instance.GameViewNavigateTo(login.Url);
+                if (IsLogin && account == LoggedInUser) return true;
+
+                // Set game manager logged in account info
+                LoggedInUser = account;
+                LoggedInServerHost = new Uri(login.Url).Host;
+                IsLogin = true;
+                return true;
+            }
+            catch (WebException)
+            {
+                // Login failed, Start from beginning
+                return false;
+            }
         }
 
         /// <summary>
