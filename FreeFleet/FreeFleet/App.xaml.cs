@@ -1,6 +1,8 @@
 using System;
 using System.Reflection;
 using FreeFleet.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
 using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
