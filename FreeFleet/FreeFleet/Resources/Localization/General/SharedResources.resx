@@ -129,4 +129,8 @@
     <value>Ok</value>
     <comment>Text displayed on a general Ok button.</comment>
   </data>
+  <data name="NodeNotFound" xml:space="preserve">
+    <value>NOT FOUND</value>
+    <comment>Default value when a node is not found.</comment>
+  </data>
 </root>

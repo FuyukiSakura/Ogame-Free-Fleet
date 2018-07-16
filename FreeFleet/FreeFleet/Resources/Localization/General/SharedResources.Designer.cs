@@ -86,5 +86,14 @@ namespace FreeFleet.Resources.Localization.General {
                 return ResourceManager.GetString("ButtonOk", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOT FOUND.
+        /// </summary>
+        internal static string NodeNotFound {
+            get {
+                return ResourceManager.GetString("NodeNotFound", resourceCulture);
+            }
+        }
     }
 }

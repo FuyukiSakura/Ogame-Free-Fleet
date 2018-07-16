@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
@@ -8,6 +9,7 @@ using FreeFleet.Core;
 using FreeFleet.Extension;
 using FreeFleet.Model.Ogame;
 using FreeFleet.Resources;
+using FreeFleet.Resources.Localization.General;
 using HtmlAgilityPack;
 using Xamarin.Forms;
 using DebugMessage = FreeFleet.Resources.Localization.General.DebugMessageResources;
@@ -103,23 +105,19 @@ namespace FreeFleet.Services.Web
                 return fleets.ToArray(); // No event, return
             }
 
-            foreach (var node in eventFleetNodes)
-            {
-                // TODO: Null check every node
-                var coordOrigin = node.SelectSingleNode("//td[@class='coordsOrigin']/a").InnerHtml.Trim();
-                var coordDest = node.SelectSingleNode("//td[@class='destCoords']/a").InnerHtml.Trim();
-                var detailsFleet = node.SelectSingleNode("//td[@class='detailsFleet']/span").InnerHtml;
-                var missionType = node.Attributes["data-mission-type"].Value;
-
-                fleets.Add(new EventFleet
+            fleets.AddRange(from node in eventFleetNodes
+                let coordOrigin = node.SelectSingleNode("./td[@class='coordsOrigin']/a")?.InnerHtml.Trim() ?? SharedResources.NodeNotFound
+                let coordDest = node.SelectSingleNode("./td[@class='destCoords']/a")?.InnerHtml.Trim() ?? SharedResources.NodeNotFound
+                let detailsFleet = node.SelectSingleNode("./td[@class='detailsFleet']/span")?.InnerHtml ?? "0"
+                let missionType = node.Attributes["data-mission-type"]?.Value ?? "1"
+                select new EventFleet
                 {
                     Id = node.Id,
                     CoordsOrigin = coordOrigin,
                     CoordsDest = coordDest,
                     DetailsFleet = Convert.ToInt64(detailsFleet),
-                    MissionType = (MissionType)Convert.ToInt16(missionType)
+                    MissionType = (MissionType) Convert.ToInt16(missionType)
                 });
-            }
 
             Logger.Log(DebugMessage.EventFleetRefreshSuccess);
             return fleets.ToArray();
