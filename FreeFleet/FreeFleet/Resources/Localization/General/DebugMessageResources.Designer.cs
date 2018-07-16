@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FreeFleet.Resources.Localization.Layout {
+namespace FreeFleet.Resources.Localization.General {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace FreeFleet.Resources.Localization.Layout {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class GamePageResources {
+    internal class DebugMessageResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal GamePageResources() {
+        internal DebugMessageResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FreeFleet.Resources.Localization.Layout {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.Localization.Layout.GamePageResources", typeof(GamePageResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FreeFleet.Resources.Localization.General.DebugMessageResources", typeof(DebugMessageResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,67 @@ namespace FreeFleet.Resources.Localization.Layout {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Destination.
+        ///   Looks up a localized string similar to Event fleet refreshed with empty results..
         /// </summary>
-        internal static string CoordsDestColumnHeader {
+        internal static string EventFleetRefreshEmptyFleet {
             get {
-                return ResourceManager.GetString("CoordsDestColumnHeader", resourceCulture);
+                return ResourceManager.GetString("EventFleetRefreshEmptyFleet", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Origin.
+        ///   Looks up a localized string similar to Failed requesting event fleet.
+        ///Reason: {0}
+        ///Response Body: {1}.
         /// </summary>
-        internal static string CoordsOriginColumnHeader {
+        internal static string EventFleetRefreshFail {
             get {
-                return ResourceManager.GetString("CoordsOriginColumnHeader", resourceCulture);
+                return ResourceManager.GetString("EventFleetRefreshFail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fleets.
+        ///   Looks up a localized string similar to Logged out..
         /// </summary>
-        internal static string DetailsFleetColumnHeader {
+        internal static string EventFleetRefreshLoggedOut {
             get {
-                return ResourceManager.GetString("DetailsFleetColumnHeader", resourceCulture);
+                return ResourceManager.GetString("EventFleetRefreshLoggedOut", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Server rejected..
         /// </summary>
-        internal static string MenuSettingsButton {
+        internal static string EventFleetRefreshRejected {
             get {
-                return ResourceManager.GetString("MenuSettingsButton", resourceCulture);
+                return ResourceManager.GetString("EventFleetRefreshRejected", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logs.
+        ///   Looks up a localized string similar to Event fleet refreshed..
         /// </summary>
-        internal static string MenuShowLogButton {
+        internal static string EventFleetRefreshSuccess {
             get {
-                return ResourceManager.GetString("MenuShowLogButton", resourceCulture);
+                return ResourceManager.GetString("EventFleetRefreshSuccess", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mission Type.
+        ///   Looks up a localized string similar to Offensive mission detected..
         /// </summary>
-        internal static string MissionTypeColumnHeader {
+        internal static string OffensiveMissionDetected {
             get {
-                return ResourceManager.GetString("MissionTypeColumnHeader", resourceCulture);
+                return ResourceManager.GetString("OffensiveMissionDetected", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop alarm.
+        ///   Looks up a localized string similar to User {0} Login..
         /// </summary>
-        internal static string StopAlarmButton {
+        internal static string UserLogin {
             get {
-                return ResourceManager.GetString("StopAlarmButton", resourceCulture);
+                return ResourceManager.GetString("UserLogin", resourceCulture);
             }
         }
     }

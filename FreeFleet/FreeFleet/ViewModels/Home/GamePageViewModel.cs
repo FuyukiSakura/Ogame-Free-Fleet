@@ -91,6 +91,7 @@ namespace FreeFleet.ViewModels.Home
 
         #region Menu
 
+        public string ShowLogButton { get; } = GamePageResources.MenuShowLogButton;
         public string SettingsButton { get; } = GamePageResources.MenuSettingsButton;
 
         #endregion
