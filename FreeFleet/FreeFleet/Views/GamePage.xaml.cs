@@ -108,6 +108,16 @@ namespace FreeFleet.Views
 	    }
 
         /// <summary>
+        /// Handles show log button on clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+	    private async void ShowLogBtn_OnClicked(object sender, EventArgs e)
+	    {
+	        await Navigation.PushModalAsync(new LoggerModal());
+        }
+
+        /// <summary>
         /// Handles login button on clicked
         /// </summary>
         /// <param name="sender"></param>

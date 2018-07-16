@@ -15,6 +15,7 @@ using FreeFleet.ViewModels;
 using FreeFleet.Views;
 using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
+using DebugMessage = FreeFleet.Resources.Localization.General.DebugMessageResources;
 
 namespace FreeFleet.Core
 {
@@ -56,6 +57,8 @@ namespace FreeFleet.Core
                 LoggedInUser = account;
                 LoggedInServerHost = new Uri(login.Url).Host;
                 IsLogin = true;
+                Logger.Log(string.Format(DebugMessage.UserLogin, 
+                    account.Name));
                 return true;
             }
             catch (WebException)
@@ -155,6 +158,7 @@ namespace FreeFleet.Core
 
             // Offensive mission, play alert
             CrossSimpleAudioPlayer.Current.Play();
+            Logger.Log(DebugMessage.OffensiveMissionDetected);
         }
 
         #endregion

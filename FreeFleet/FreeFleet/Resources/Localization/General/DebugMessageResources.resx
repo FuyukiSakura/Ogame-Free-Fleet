@@ -117,32 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CoordsDestColumnHeader" xml:space="preserve">
-    <value>Destination</value>
-    <comment>Text displayed as column header for Coords Dest property.</comment>
+  <data name="EventFleetRefreshEmptyFleet" xml:space="preserve">
+    <value>Event fleet refreshed with empty results.</value>
+    <comment>Log entry when event fleet is updated successfully but result is empty.</comment>
   </data>
-  <data name="CoordsOriginColumnHeader" xml:space="preserve">
-    <value>Origin</value>
-    <comment>Text displayed as column header for Coords Origin property.</comment>
+  <data name="EventFleetRefreshFail" xml:space="preserve">
+    <value>Failed requesting event fleet.
+Reason: {0}
+Response Body: {1}</value>
+    <comment>Log entry when event fleet update failed.</comment>
   </data>
-  <data name="DetailsFleetColumnHeader" xml:space="preserve">
-    <value>Fleets</value>
-    <comment>Text displayed as column header for Details Fleet property.</comment>
+  <data name="EventFleetRefreshLoggedOut" xml:space="preserve">
+    <value>Logged out.</value>
+    <comment>Reason for event fleet update failed because of user logged out.</comment>
   </data>
-  <data name="MenuSettingsButton" xml:space="preserve">
-    <value>Settings</value>
-    <comment>Text displayed on the side menu for the settings button.</comment>
+  <data name="EventFleetRefreshRejected" xml:space="preserve">
+    <value>Server rejected.</value>
+    <comment>Reason for event fleet update failed because of server reject.</comment>
   </data>
-  <data name="MenuShowLogButton" xml:space="preserve">
-    <value>Logs</value>
-    <comment>Text displayed on the button for showing log.</comment>
+  <data name="EventFleetRefreshSuccess" xml:space="preserve">
+    <value>Event fleet refreshed.</value>
+    <comment>Log entry when event fleet is updated successfully.</comment>
   </data>
-  <data name="MissionTypeColumnHeader" xml:space="preserve">
-    <value>Mission Type</value>
-    <comment>Text displayed as column header for Mission Type property.</comment>
+  <data name="OffensiveMissionDetected" xml:space="preserve">
+    <value>Offensive mission detected.</value>
+    <comment>Log entry when offensive mission is detected.</comment>
   </data>
-  <data name="StopAlarmButton" xml:space="preserve">
-    <value>Stop alarm</value>
-    <comment>Text displayed on the button for stopping the alarm.</comment>
+  <data name="UserLogin" xml:space="preserve">
+    <value>User {0} Login.</value>
+    <comment>Log entry when user is logged in.</comment>
   </data>
 </root>

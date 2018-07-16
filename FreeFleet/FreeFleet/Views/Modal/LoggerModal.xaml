@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:FreeFleet.ViewModels.Modal;assembly=FreeFleet"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:controls="clr-namespace:FreeFleet.Controls;assembly=FreeFleet"
+             x:Class="FreeFleet.Views.Modal.LoggerModal">
+    <ContentPage.BindingContext>
+        <viewModel:LoggerViewModal />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--#region Control bar-->
+
+            <controls:AppHeader LeftButtonText="{StaticResource ArrowLeftIcon}"
+                                Title="{Binding Path=Title}"
+                                TitleHorizontalOptions="Center"
+                                LeftButtonCommand="{Binding AppBarLeftButtonCommand}" />
+
+            <!--#endregion-->
+
+            <StackLayout Grid.Row="1"
+                         Padding="10">
+                <telerikDataControls:RadListView HorizontalOptions="Center"
+                                                 VerticalOptions="FillAndExpand"
+                                                 ItemsSource="{Binding Logs}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

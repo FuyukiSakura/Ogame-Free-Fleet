@@ -4,11 +4,13 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
+using FreeFleet.Core;
 using FreeFleet.Extension;
 using FreeFleet.Model.Ogame;
 using FreeFleet.Resources;
 using HtmlAgilityPack;
 using Xamarin.Forms;
+using DebugMessage = FreeFleet.Resources.Localization.General.DebugMessageResources;
 
 namespace FreeFleet.Services.Web
 {
@@ -69,10 +71,23 @@ namespace FreeFleet.Services.Web
                 host));
             var container = GetCookies(uri);
             var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
-            if (response.StatusCode != HttpStatusCode.OK) return null; // Failed requesting resources
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                // Failed requesting resources
+                Logger.Log(string.Format(DebugMessage.EventFleetRefreshFail, 
+                    DebugMessage.EventFleetRefreshRejected, 
+                    ""));
+                return null;
+            }
 
             // Check if logged out
-            if (response.ResponseUri.Host == UriList.OgameLobbyHost) return null; // Logged out return
+            if (response.ResponseUri.Host == UriList.OgameLobbyHost){
+                // Logged out return
+                Logger.Log(string.Format(DebugMessage.EventFleetRefreshFail,
+                    DebugMessage.EventFleetRefreshLoggedOut,
+                    ""));
+                return null;
+            }
 
             var doc = new HtmlDocument();
             using (var reader = new StreamReader(response.GetResponseStream()))
@@ -83,7 +98,10 @@ namespace FreeFleet.Services.Web
             // Parse event fleet page into Event Fleet details
             var fleets = new List<EventFleet>();
             var eventFleetNodes = doc.DocumentNode.SelectNodes("//tr[@class='eventFleet']");
-            if (eventFleetNodes == null) return fleets.ToArray(); // No event, return
+            if (eventFleetNodes == null) {
+                Logger.Log(DebugMessage.EventFleetRefreshEmptyFleet);
+                return fleets.ToArray(); // No event, return
+            }
 
             foreach (var node in eventFleetNodes)
             {
@@ -103,6 +121,7 @@ namespace FreeFleet.Services.Web
                 });
             }
 
+            Logger.Log(DebugMessage.EventFleetRefreshSuccess);
             return fleets.ToArray();
         }
 
