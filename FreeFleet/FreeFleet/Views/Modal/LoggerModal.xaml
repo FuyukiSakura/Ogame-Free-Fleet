@@ -25,12 +25,13 @@
 
             <!--#endregion-->
 
-            <StackLayout Grid.Row="1"
-                         Padding="10">
+            <ScrollView Grid.Row="1" 
+                        Orientation="Vertical"
+                        Padding="10">
                 <telerikDataControls:RadListView HorizontalOptions="Center"
                                                  VerticalOptions="FillAndExpand"
                                                  ItemsSource="{Binding Logs}" />
-            </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
