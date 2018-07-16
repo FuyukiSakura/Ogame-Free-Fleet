@@ -79,6 +79,15 @@ namespace FreeFleet.Resources.Localization.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Test alarm.
+        /// </summary>
+        internal static string TestAlarmBtn {
+            get {
+                return ResourceManager.GetString("TestAlarmBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Timer interval.
         /// </summary>
         internal static string TimerIntervalLabel {

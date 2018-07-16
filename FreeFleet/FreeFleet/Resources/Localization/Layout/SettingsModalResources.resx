@@ -125,6 +125,10 @@
     <value>Random factor</value>
     <comment>Text displayed for label of Random Up To Seconds setting.</comment>
   </data>
+  <data name="TestAlarmBtn" xml:space="preserve">
+    <value>Test alarm</value>
+    <comment>Text displayed on the label of Test alarm button.</comment>
+  </data>
   <data name="TimerIntervalLabel" xml:space="preserve">
     <value>Timer interval</value>
     <comment>Text displayed for label of Timer Interval setting.</comment>

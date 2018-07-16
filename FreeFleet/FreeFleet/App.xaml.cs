@@ -1,5 +1,7 @@
 using System;
+using System.Reflection;
 using FreeFleet.Views;
+using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,8 +19,15 @@ namespace FreeFleet
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            // Handle when your app starts
+
+            // Load sound for alaert
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+		    var audioStream = assembly.GetManifestResourceStream("FreeFleet.Resources.Audio." + "alarm.mp3");
+		    var player = CrossSimpleAudioPlayer.Current;
+            player.Loop = true;
+		    player.Load(audioStream);
+        }
 
 		protected override void OnSleep ()
 		{

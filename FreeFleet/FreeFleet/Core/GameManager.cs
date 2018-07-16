@@ -146,7 +146,7 @@ namespace FreeFleet.Core
         /// <param name="e"></param>
         private void EventFleetChangedHandler(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnPropertyChanged("IsUnderAttack"); // Check status
+            OnPropertyChanged(nameof(IsUnderAttack)); // Check status
             if (e.Action != NotifyCollectionChangedAction.Add) return;
             if (!(e.NewItems[0] is EventFleet eventFleet)) return; // Type mismatch, return
 
@@ -154,12 +154,7 @@ namespace FreeFleet.Core
             if (!offensiveMission.Contains(eventFleet.MissionType)) return; // Not an offensive mission, return
 
             // Offensive mission, play alert
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            var audioStream = assembly.GetManifestResourceStream("FreeFleet.Resources.Audio." + "alarm.mp3");
-            var player = CrossSimpleAudioPlayer.Current;
-            player.Loop = true;
-            player.Load(audioStream);
-            player.Play();
+            CrossSimpleAudioPlayer.Current.Play();
         }
 
         #endregion

@@ -42,6 +42,9 @@
                         <telerikPrimitives:RadCheckBox IsChecked="{Binding GameManager.AutoRelogin, Mode=TwoWay}" />
                         <Label Text="{Binding AutoLoginLabel}" />
                     </StackLayout>
+                    <BoxView Style="{StaticResource HorizontalSeparator}" />
+                    <telerikInput:RadButton Text="{Binding TestAlarmBtnLabel}"
+                                            Clicked="TestAlarmBtn_OnClicked"/>
                 </StackLayout>
             </ScrollView>
         </Grid>
