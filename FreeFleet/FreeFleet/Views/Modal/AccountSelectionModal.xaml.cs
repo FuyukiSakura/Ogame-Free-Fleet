@@ -77,15 +77,17 @@ namespace FreeFleet.Views.Modal
         protected override async void OnAppearing()
 	    {
 	        base.OnAppearing();
-	        try
+
+	        var accounts = await DependencyService.Get<IHttpService>().GetAccountsAsync();
+	        if (accounts == null)
 	        {
-	            var accounts = await DependencyService.Get<IHttpService>().GetAccountsAsync();
-	            foreach (var account in accounts)
-	            {
-	                _vm.Accounts.Add(account);
-	            }
+	            await DisplayWarning(ErrorMessage.CouldNotLoadAccountList);
+	            return;
 	        }
-	        catch (WebException) { }
+	        foreach (var account in accounts)
+	        {
+	            _vm.Accounts.Add(account);
+	        }
 	    }
 
         #endregion

@@ -61,6 +61,15 @@ namespace FreeFleet.Resources.Localization.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot load account list..
+        /// </summary>
+        internal static string CouldNotLoadAccountList {
+            get {
+                return ResourceManager.GetString("CouldNotLoadAccountList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login failed..
         /// </summary>
         internal static string LoginFailed {
