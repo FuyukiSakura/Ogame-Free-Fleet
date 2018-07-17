@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using FreeFleet.Core;
@@ -21,14 +24,19 @@ namespace FreeFleet.Services.Web
         /// <summary>
         /// Send HTML request
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="cookieContainer"></param>
+        /// <param name="uri"></param>
         /// <returns></returns>
-        public async Task<WebResponse> GetResponseAsync(string url, CookieContainer cookieContainer)
+        public async Task<HttpResponseMessage> HttpSendRequestAsync(Uri uri)
         {
-            var request = GenerateBrowserSimulatedWebRequest(url);
-            request.CookieContainer = cookieContainer;
-            return await request.GetResponseAsync();
+            var handler = new HttpClientHandler
+            {
+                CookieContainer = GetCookies(uri)
+            };
+            var request = new HttpRequestMessage(HttpMethod.Get, uri);
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+            request.Headers.Add("User-Agent", BrowserInfo.UserAgent);
+            var client = new HttpClient(handler);
+            return await client.SendAsync(request);
         }
 
         #region Accounts
@@ -36,14 +44,8 @@ namespace FreeFleet.Services.Web
         public async Task<ServerAccount[]> GetAccountsAsync()
         {
             var uri = new Uri(UriList.OgameAccountList);
-            var container = GetCookies(uri);
-            var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
-            if (response.StatusCode != HttpStatusCode.OK) return null; // Failed requesting resources
-
-            using (var reader = new StreamReader(response.GetResponseStream()))
-            {
-                return (await reader.ReadToEndAsync()).JsonDeserialize<ServerAccount[]>();
-            }
+            var response = await HttpSendRequestAsync(uri);
+            return !response.IsSuccessStatusCode ? null : (await response.Content.ReadAsStringAsync()).JsonDeserialize<ServerAccount[]>();
         }
 
         public async Task<LobbyLogin> LoginAccountAsync(ServerAccount account)
@@ -52,14 +54,9 @@ namespace FreeFleet.Services.Web
                 account.Id,
                 account.Server.Language, 
                 account.Server.Number));
-            var container = GetCookies(uri);
-            var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
-            if (response.StatusCode != HttpStatusCode.OK) return null; // Failed requesting resources
-
-            using (var reader = new StreamReader(response.GetResponseStream()))
-            {
-                return (await reader.ReadToEndAsync()).JsonDeserialize<LobbyLogin>();
-            }
+            var response = await HttpSendRequestAsync(uri);
+            if (!response.IsSuccessStatusCode) return null; // Failed requesting resources
+            return (await response.Content.ReadAsStringAsync()).JsonDeserialize<LobbyLogin>();
         }
 
         #endregion
@@ -71,9 +68,8 @@ namespace FreeFleet.Services.Web
             // Load Event Fleets page
             var uri = new Uri(string.Format(UriList.OgameEventFleetUrl,
                 host));
-            var container = GetCookies(uri);
-            var response = (HttpWebResponse)await GetResponseAsync(uri.AbsoluteUri, container);
-            if (response.StatusCode != HttpStatusCode.OK)
+            var response = await HttpSendRequestAsync(uri);
+            if (!response.IsSuccessStatusCode)
             {
                 // Failed requesting resources
                 Logger.Log(string.Format(DebugMessage.EventFleetRefreshFail, 
@@ -83,7 +79,7 @@ namespace FreeFleet.Services.Web
             }
 
             // Check if logged out
-            if (response.ResponseUri.Host == UriList.OgameLobbyHost){
+            if (response.RequestMessage.RequestUri.Host == UriList.OgameLobbyHost){
                 // Logged out return
                 Logger.Log(string.Format(DebugMessage.EventFleetRefreshFail,
                     DebugMessage.EventFleetRefreshLoggedOut,
@@ -92,10 +88,7 @@ namespace FreeFleet.Services.Web
             }
 
             var doc = new HtmlDocument();
-            using (var reader = new StreamReader(response.GetResponseStream()))
-            {
-                doc.LoadHtml(await reader.ReadToEndAsync());
-            }
+            doc.LoadHtml(await response.Content.ReadAsStringAsync());
 
             // Parse event fleet page into Event Fleet details
             var fleets = new List<EventFleet>();
@@ -121,22 +114,6 @@ namespace FreeFleet.Services.Web
 
             Logger.Log(DebugMessage.EventFleetRefreshSuccess);
             return fleets.ToArray();
-        }
-
-        #endregion
-
-        #region Internal functions
-
-        /// <summary>
-        /// Generate a web request that looks like a browser request
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        private static HttpWebRequest GenerateBrowserSimulatedWebRequest(string url)
-        {
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers[HttpRequestHeader.UserAgent] = BrowserInfo.UserAgent;
-            return request;
         }
 
         #endregion
