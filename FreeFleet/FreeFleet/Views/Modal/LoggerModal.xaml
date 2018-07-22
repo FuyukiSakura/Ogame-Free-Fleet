@@ -24,14 +24,11 @@
                                 LeftButtonCommand="{Binding AppBarLeftButtonCommand}" />
 
             <!--#endregion-->
-
-            <ScrollView Grid.Row="1" 
-                        Orientation="Vertical"
-                        Padding="10">
-                <telerikDataControls:RadListView HorizontalOptions="Center"
-                                                 VerticalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding Logs}" />
-            </ScrollView>
+            <telerikDataControls:RadListView Grid.Row="1"
+                                             Margin="10"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="FillAndExpand"
+                                             ItemsSource="{Binding Logs}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
