@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using FFImageLoading.Forms.Platform;
+using UnhandledExceptionEventArgs = Windows.UI.Xaml.UnhandledExceptionEventArgs;
 
 namespace FreeFleet.UWP
 {
@@ -21,6 +22,18 @@ namespace FreeFleet.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += OnUnhandledException;
+        }
+
+        /// <summary>
+        /// Handles unhandled exception
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            // TODO: Log the error
+            e.Handled = true;
         }
 
         /// <summary>
