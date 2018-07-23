@@ -131,17 +131,22 @@ namespace FreeFleet.Views
 
         #region Browser Handlers
 
-        /// <summary>
-        /// Handles GameView OnNavigating events
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GameView_OnNavigating(object sender, WebNavigatingEventArgs e)
+	    /// <summary>
+	    /// Handles GameView OnNavigating events
+	    /// </summary>
+	    /// <param name="sender"></param>
+	    /// <param name="e"></param>
+	    private void GameView_OnNavigating(object sender, WebNavigatingEventArgs e)
 	    {
+	        var uri = new Uri(e.Url);
 	        _vm.MainUrl = e.Url;
+	        if (uri.Host != UriList.OgameLobbyHost)
+	        {
+	            _vm.ShowLoginBtn = false; // Not in lobby, hide login btn
+	        }
 	    }
 
-        /// <summary>
+	    /// <summary>
         /// Handles GameView OnNavigated events
         /// </summary>
         /// <param name="sender"></param>
@@ -175,7 +180,6 @@ namespace FreeFleet.Views
             }
             else
             {
-                _vm.ShowLoginBtn = false; // Not in lobby, hide login btn
                 // Check if in Game
                 var r = new Regex(@"s\d+-[a-z]+.ogame.gameforge.com");
                 var m = r.Match(uri.Host);
