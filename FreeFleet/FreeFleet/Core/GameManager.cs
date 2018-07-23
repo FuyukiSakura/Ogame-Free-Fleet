@@ -50,6 +50,8 @@ namespace FreeFleet.Core
             try
             {
                 var login = await DependencyService.Get<IHttpService>().LoginAccountAsync(account);
+                if (login == null) return false; // Failed login
+
                 GamePage.Instance.GameViewNavigateTo(login.Url);
                 if (IsLogin && account == LoggedInUser) return true;
 
